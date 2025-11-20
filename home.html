@@ -1,0 +1,65 @@
+<!-- @pageTitle 홈 -->
+<!-- @pageNote 메인 페이지 -->
+<!-- @pageCreated 2025-01-15 -->
+<!-- @pageUpdated 2025-01-15 -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<!-- 기본 -->
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=1410">
+	<meta name="description" content="PC 전용 웹사이트입니다">
+	<meta name="keywords" content="키워드1, 키워드2">
+	<meta name="author" content="작성자명">
+	<meta name="robots" content="index, follow">
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="사이트 제목">
+	<meta property="og:description" content="사이트 설명">
+	<meta property="og:image" content="https://example.com/image.jpg">
+	<meta property="og:url" content="https://example.com">
+	<meta name="referrer" content="no-referrer-when-downgrade">
+	<meta http-equiv="x-dns-prefetch-control" content="on">
+	<title>대출 비교 시스템</title>
+	<script src="/lib/jquery/jquery-3.7.1.min.js"></script>
+	<script src="./lib/swiper/swiper-bundle.min.js"></script>
+	<link rel="stylesheet" href="./lib/swiper/swiper-bundle.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/monthSelect/style.css">
+	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+	<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ko.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/monthSelect/index.js"></script>  <script src="./assets/js/main.js"></script>
+  <link rel="stylesheet" href="./assets/css/main.css">
+</head>
+<body>
+	<main id="main" class="main">
+		<!-- Swiper 예제 -->
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide">Slide 1</div>
+				<div class="swiper-slide">Slide 2</div>
+				<div class="swiper-slide">Slide 3</div>
+			</div>
+			<div class="swiper-pagination"></div>
+			<div class="swiper-button-next"></div>
+			<div class="swiper-button-prev"></div>
+		</div>
+	</main>
+	<script>
+		// Swiper 초기화
+		document.addEventListener('DOMContentLoaded', function() {
+			const swiper = new Swiper('.swiper-container', {
+				loop: true,
+				pagination: {
+					el: '.swiper-pagination',
+					clickable: true,
+				},
+				navigation: {
+					nextEl: '.swiper-button-next',
+					prevEl: '.swiper-button-prev',
+				},
+			});
+		});
+	</script>
+</body>
+</html>
