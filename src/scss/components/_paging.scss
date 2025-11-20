@@ -1,0 +1,144 @@
+// ========================================
+// Pagination
+// ========================================
+
+
+
+.pagination {
+  @include flex(center, center);
+  gap:8px;
+  margin-top: 40px;
+  li {
+    list-style: none;
+  }
+
+  // 기본 버튼
+  .page-item {
+    @include flex-center;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    width: 40px;height: 40px;
+    border-radius: 6px;
+    font-size: 17px;
+    color: #464C53;
+    border: 0;
+    padding: 0;
+    &.ellipsis{
+      font-size: 0;
+      background: url('/images/portal/ellipsis_horizontal.svg') no-repeat center center;
+    }
+    &:hover {
+      color: #000;
+      @include shadow('sm');
+    }
+
+    &.prev,
+    &.next{
+      border: 0;
+      width: auto;
+      .text{
+        color: #464C53;
+        font-size: 17px;
+      }
+    }
+    &.prev{
+      background: url('/images/portal/pagination_prev.svg') no-repeat 0 50%;
+      padding-left: 20px;
+    }
+    &.next{ 
+      background: url('/images/portal/pagination_next.svg') no-repeat right 50%;
+      padding-right: 20px;
+    }
+
+    &.active {
+      color: var(--color-white);
+      background-color: var(--color-brand-primary);
+      border-color: var(--color-primary);
+      cursor: default;
+      @include shadow('sm');
+    }
+
+    &.disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    // 아이콘 포함형 (이전/다음)
+    &.icon {
+      @include flex-center;
+      @include square(36px);
+      padding: 0;
+    }
+  }
+
+  // 크기 변형
+  &--sm {
+    .page-item {
+      min-width: 28px;
+      height: 28px;
+      font-size: var(--font-size-xs);
+    }
+  }
+
+  &--lg {
+    .page-item {
+      min-width: 44px;
+      height: 44px;
+      font-size: var(--font-size-lg);
+    }
+  }
+
+  // 둥근형
+  &--rounded {
+    .page-item {
+      border-radius: var(--radius-full);
+    }
+  }
+
+  // 아웃라인 스타일
+  &--outline {
+    .page-item {
+      background: transparent;
+      border: 1px solid var(--color-gray-400);
+      color: var(--color-gray-700);
+
+      &:hover {
+        border-color: var(--color-primary);
+        color: var(--color-primary);
+      }
+
+      &.active {
+        background: var(--color-primary);
+        color: var(--color-white);
+      }
+    }
+  }
+
+  // 가운데 정렬
+  &--center {
+    justify-content: center;
+  }
+
+  // 오른쪽 정렬
+  &--right {
+    justify-content: flex-end;
+  }
+}
+
+// ========================================
+// 예시 HTML
+// ========================================
+/*
+<ul class="pagination pagination--center pagination--rounded">
+  <li><button class="page-item icon" aria-label="이전">
+    <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+  </button></li>
+  <li><button class="page-item">1</button></li>
+  <li><button class="page-item active">2</button></li>
+  <li><button class="page-item">3</button></li>
+  <li><button class="page-item icon" aria-label="다음">
+    <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+  </button></li>
+</ul>
+*/
