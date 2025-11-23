@@ -4,6 +4,7 @@
 <!-- @pageUpdated 2025-10-12 -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -160,13 +161,16 @@
 		}
 	</style>
 </head>
+
 <body>
 	<div class="container">
 		<h1>2025 식품정보24</h1>
+		
 		<div class="search-box">
 			<input type="text" id="searchInput" placeholder="페이지를 검색하세요...">
 			<button id="searchButton">검색</button>
 		</div>
+
 		<div class="table-wrapper">
 			<table>
 				<thead>
@@ -203,8 +207,8 @@
 					<tr>
 						<td><a href="./home" target="_blank">home</a></td>
 						<td>홈</td>
-						<td>2025-01-15</td>
-						<td>2025-01-15</td>
+						<td>2025-11-20</td>
+						<td>2025-11-20</td>
 						<td>메인 페이지</td>
 					</tr>
 					<tr>
@@ -221,6 +225,7 @@
 			</div>
 		</div>
 	</div>
+
 	<script>
 		document.addEventListener('DOMContentLoaded', function () {
 			const searchInput = document.getElementById('searchInput');
@@ -228,9 +233,11 @@
 			const tableBody = document.getElementById('tableBody');
 			const noResults = document.getElementById('noResults');
 			const rows = tableBody.querySelectorAll('tr');
+
 			function performSearch() {
 				const searchTerm = searchInput.value.toLowerCase();
 				let resultsFound = false;
+
 				rows.forEach(row => {
 					const text = row.textContent.toLowerCase();
 					if (text.includes(searchTerm)) {
@@ -240,21 +247,25 @@
 						row.style.display = 'none';
 					}
 				});
+
 				if (resultsFound) {
 					noResults.style.display = 'none';
 				} else {
 					noResults.style.display = 'block';
 				}
 			}
+
 			searchButton.addEventListener('click', performSearch);
 			searchInput.addEventListener('keypress', function (e) {
 				if (e.key === 'Enter') {
 					performSearch();
 				}
 			});
+
 			// 실시간 검색
 			searchInput.addEventListener('input', performSearch);
 		});
 	</script>
 </body>
+
 </html>
