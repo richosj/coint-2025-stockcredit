@@ -1,0 +1,137 @@
+@use 'sass:map';
+@use 'sass:math';
+@use "sass:string";
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixin' as *;
+@use '../abstracts/functions' as *;
+@use '../abstracts/utilities' as *;
+
+
+
+.login-container{
+  padding-left: 25px;
+  padding-right: 25px; 
+  @media (min-width: map.get($breakpoints, 'md')) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.login-form{
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  @media (min-width: map.get($breakpoints, 'md')) {
+    gap: 50px;
+  }
+  .input-row{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    @media (min-width: map.get($breakpoints, 'md')) {
+      gap: 20px;
+    }
+    .label{
+      font-weight: 500;
+      font-size: 14px;
+      @media (min-width: map.get($breakpoints, 'md')) {
+        font-size: 24px;
+      }
+    }
+    input[type="text"],
+    input[type="password"]{
+      width: 100%;
+      height: 56px;
+      border: 1px solid #eee;
+      background-color: #f2f2f2;
+      border-radius: 5px;
+      padding: 0 20px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #797979;
+      @media (min-width: map.get($breakpoints, 'md')) {
+        font-size: 20px;
+        height: 90px;
+        padding: 0 40px;
+        border-radius: 20px;
+      }
+    }
+  }
+  .login-id-save{
+    margin-top: -5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    label{
+      font-size: 12px;
+      @media (min-width: map.get($breakpoints, 'md')) {
+        font-size: 18px;
+      }
+    }
+    input{
+      display: block;
+      width: 22px;
+      height: 22px;
+      appearance: none;
+      background: url('/images/login/ico-checkbox.png') no-repeat center center;
+      background-size: cover;
+      @media (min-width: map.get($breakpoints, 'md')) {
+        width: 36px;
+        height: 36px;
+      }
+    }
+  }
+  .btn-login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 56px;
+    color: #fff;
+    background-color: #df0000;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    @media (min-width: map.get($breakpoints, 'md')) {
+      height: 90px;
+      font-size: 28px;
+      border-radius: 20px;
+    }
+  }
+}
+.login-links{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 10px;
+  margin-top: 10px;
+  @media (min-width: map.get($breakpoints, 'md')) {
+    gap: 0 20px;
+    margin-top: 20px;
+  }
+  a{
+    border: 1px solid #eee;
+    height: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    background-color: #ffe0e0;
+    color: #df0000;
+    border-radius: 10px;
+    @media (min-width: map.get($breakpoints, 'md')) {
+      height: 90px;
+      font-size: 18px;
+      border-radius: 20px;
+    }
+  }
+}
+.error-message{
+  color: #ff0000;
+  font-size: 12px;
+  margin-top: -5px;
+  @media (min-width: map.get($breakpoints, 'md')) {
+    font-size: 18px;
+  }
+}

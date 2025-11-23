@@ -1,0 +1,20 @@
+// Abstracts
+@use 'sass:map';
+@use 'sass:math';
+@use "sass:string";
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixin' as *;
+@use '../abstracts/functions' as *;
+@use '../abstracts/utilities' as *;
+
+// ========================================
+// Sub Layout
+// ========================================
+
+#sub-layout{
+  background-color: #fff;
+  padding: 30px 0;
+  @media (min-width: map.get($breakpoints, 'md')) {
+    padding: 60px 0;
+  }
+}

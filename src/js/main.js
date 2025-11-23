@@ -3,6 +3,18 @@ console.log("Main JS loaded");
 
 // 햄버거 메뉴 및 모바일 네비게이션 토글 기능
 document.addEventListener('DOMContentLoaded', function() {
+
+  if(document.querySelector('.main-visual .swiper')){
+    const swiper = new Swiper('.main-visual .swiper', {
+      loop: true,
+      pagination: {
+        el: '.main-visual-pagination .swiper-pagination',
+        clickable: true,
+      },
+      navigation: false,
+    });
+  }
+
   const hamburgerMenus = document.querySelectorAll('.header-hamburger .hamburger-menu');
   const mobileNav = document.querySelector('.mobile-nav');
   const body = document.body;
