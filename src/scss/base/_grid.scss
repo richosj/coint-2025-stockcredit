@@ -1,4 +1,9 @@
 @use 'sass:math';
+@use '../abstracts/mixin' as *;
+@use '../abstracts/variables' as *;
+@use '../abstracts/functions' as *;
+@use '../abstracts/utilities' as *;
+
 
 
 .container {

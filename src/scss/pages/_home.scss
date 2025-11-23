@@ -1,0 +1,408 @@
+@use 'sass:map';
+@use 'sass:math';
+@use "sass:string";
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixin' as *;
+@use '../abstracts/functions' as *;
+@use '../abstracts/utilities' as *;
+
+
+// ========================================
+// Home Page
+// ========================================
+
+.main{
+  padding-top: 85px;
+  @media (min-width: map.get($breakpoints, 'md')) {
+    padding-top: 0;
+  }
+}
+.main-visual{
+  .container{
+    @media (min-width: map.get($breakpoints, 'md')) {
+      max-width: 100%;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+  .main-visual-pagination{
+    margin: 0 auto;
+    max-width: 770px;
+    position: relative;
+  }
+  .swiper-pagination{
+    text-align: left;
+    bottom: 40px;
+    padding-left: 70px;
+    .swiper-pagination-bullet-active{
+      background: #000000;
+    }
+  }
+  .swiper-slide{
+    padding-bottom: 40.25%;
+    position: relative;
+    height: auto !important;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+    a{
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+      background-size: cover;
+      overflow: hidden;
+      border-radius: 20px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    @media (min-width: map.get($breakpoints, 'md')) {
+      height: 440px !important;
+      padding-bottom: 0;
+      a{
+        background: none !important;
+      }
+    }
+  }
+  
+}
+.section-top-banner {
+  padding-top: 10px;
+  .banner-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .banner-item {
+    &:nth-child(1),
+    &:nth-child(2) {
+      width: calc(50% - 5px);
+    }
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+  .banner-content {
+    width: 100%;
+    border: 1px solid #eee;
+    background-color: #0d0d0d;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 0 25px;
+    .live-tag {
+      background: #ff0000;
+      color: #fff;
+      border-radius: 5px;
+      font-size: 13px;
+      padding: 3px 5px;
+      top: 7px;
+      left: 7px;
+      font-weight: 700;
+      position: absolute;
+      line-height: 1;
+      
+      z-index: 1;
+    }
+  }
+  @media (min-width: map.get($breakpoints, 'md')) {
+    padding-top: 35px;
+    padding-bottom: 45px;
+    .banner-list{
+      gap: 14px;
+    }
+    .banner-item{
+      &:nth-child(1),
+      &:nth-child(2) {
+        width: calc(50% - 7px);
+      }
+    }
+    .banner-content{
+      padding: 0 30px;
+      .live-tag{
+        font-size: 28px;
+        padding: 1px 8px;
+      }
+    }
+    .banner-content-item{
+      
+    }
+  }
+}
+.banner-content-item{
+  text-align: center;
+  height: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  .banner-content-item-title{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    justify-content: center;
+    padding-top: 15px;
+    &.pt-0{
+      padding-top: 0;
+    }
+  }
+
+  h3{
+    color: #fff;
+    font-size: 25px;
+    .unit{
+      font-weight: 400;
+      font-size: 15px;
+      padding-left: 4px;
+    }
+    &.sm{
+      font-size: 14px;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      line-height: 1.24;
+    }
+  }
+  p{
+    color: #808080;
+    font-weight: 500;
+    font-size: 12px;
+  }
+  @media (min-width: map.get($breakpoints, 'md')) {
+    height: 180px;
+    padding-bottom: 20px;
+    h3{
+      font-size: 50px;
+      em{
+        font-size: 30px;
+      }
+      &.sm{
+        font-size: 28px;
+      }
+    }
+    p{
+      font-size: 24px;
+    }
+  }
+}
+
+
+/* section-intro */
+.section-intro{
+  margin-top: 10px;
+  @media (min-width: map.get($breakpoints, 'md')) {
+    margin-top: 0;
+    background-color: #fff;
+    padding: 50px 0 65px;
+  }
+}
+.section-intro-inner{
+  background-color: #ffffff;
+  border: 1px solid #eee;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  border-radius: 20px;
+  @media (min-width: map.get($breakpoints, 'md')) {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    gap: 35px;
+  }
+}
+.section-intro-item{
+  display: flex;
+  @media (min-width: map.get($breakpoints, 'md')) {
+    gap:0 25px;
+    align-items: center;
+    &.reverse{
+      justify-content: flex-end;
+    }
+  }
+  .intro-image{
+   border-radius: 24px; 
+   background-color: #f2f2f2;
+   width: 70px;
+   flex-shrink: 0;
+   @media (min-width: map.get($breakpoints, 'md')) {
+    width: 140px;
+  }
+   img{
+    object-fit: cover;
+    object-position: center center;
+    width: 100%;
+    height: 100%;
+   }
+  }
+ 
+}
+.section-intro-content{
+  flex: 1;
+  .section-title{
+    font-weight: 500;
+    color: #b3b3b3;
+    font-size: 13px;
+    padding-bottom: 13px;
+  }
+  .section-desc{
+    line-height: 1.34;
+    font-weight: 700;
+    color: #090f19;
+    font-size: 16px;
+  }
+  @media (min-width: map.get($breakpoints, 'md')) {
+    flex: none;
+    .section-title{
+      font-size: 20px;
+      padding-bottom: 15px;
+    }
+    .section-desc{
+      font-size:32px;
+      line-height: 1.24;
+    }
+  }
+}
+
+
+.section-use-cases{
+  margin-top: 15px;
+  @media (min-width: map.get($breakpoints, 'md')) {
+    margin-top: 0;
+    background-color: #f1f1f1;
+    padding: 60px 0;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+  }
+}
+.section-use-cases-inner{
+  background-color: #ffffff;
+  border: 1px solid #eee;
+  padding: 30px 20px;
+  padding-right: 13px;
+  border-radius: 20px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+  @media (min-width: map.get($breakpoints, 'md')) {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    box-shadow: none;
+  }
+  .section-title{
+    font-weight: 700;
+    color: #444647;
+    font-size: 14px;
+    line-height: 1.34;
+    @media (min-width: map.get($breakpoints, 'md')) {
+      font-size: 24px;
+    }
+  }
+  .section-subtitle{
+    font-weight: 500;
+    color: #444647;
+    font-size: 14px;
+    @media (min-width: map.get($breakpoints, 'md')) {
+      font-size: 24px;
+    }
+  }
+}
+.use-case-list{
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  @media (min-width: map.get($breakpoints, 'md')) {
+    margin-top: 60px;
+    gap: 50px 0;
+  }
+}
+.use-case-item{
+  display: flex;
+  gap:0 10px;
+  align-items: flex-start;
+  @media (min-width: map.get($breakpoints, 'md')) {
+    gap:0 20px;
+  }
+  .use-case-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background-color: #f2f2f2;
+    padding: 3px;
+    border-radius: 7px;
+    width: 28px;
+    height: 28px;
+    @media (min-width: map.get($breakpoints, 'md')) {
+      width: 56px;
+      height: 56px;
+      background-color: #fff;
+      border-radius: 15px;
+    }
+  }
+  .use-case-content{
+    flex: 1;
+    position: relative;
+    padding-right: 15px;
+    @media (min-width: map.get($breakpoints, 'md')) {
+      padding-right: 60px;
+    }
+    .use-case-arrow{
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 15px;
+      height: 15px;
+      background: url('/images/main/use-case-arrow.png') no-repeat center center;
+      background-size: 5px auto;
+      transform: rotate(0deg);
+      transition: transform 0.3s ease-in-out;
+      &.active{
+        transform: rotate(-90deg);
+      }
+      @media (min-width: map.get($breakpoints, 'md')) {
+        width: 18px;
+        height: 18px;
+        background-size: 10px auto;
+      }
+    }
+    .use-case-title{
+      font-weight: 700; 
+      color: #090f19;
+      font-size: 15px;
+      @media (min-width: map.get($breakpoints, 'md')) {
+        font-size: 32px;
+      }
+    }
+    .use-case-desc{
+      margin-top: 2px;
+      font-weight: 500;
+      color: #b3b3b3;
+      font-size: 13px;
+      line-height: 1.34;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      @media (min-width: map.get($breakpoints, 'md')) {
+        font-size: 20px;
+      }
+      &.open{
+        overflow: visible;
+        -webkit-line-clamp: unset;
+        -webkit-box-orient: unset;
+        display: block;
+      }
+    }
+  }
+}

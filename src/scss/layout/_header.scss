@@ -1,0 +1,223 @@
+@use 'sass:map';
+@use 'sass:math';
+@use "sass:string";
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixin' as *;
+@use '../abstracts/functions' as *;
+@use '../abstracts/utilities' as *;
+
+// ========================================
+// Header
+// ========================================
+body{background-color: #f2f2f2;}
+.header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 25px 14px 0;
+  z-index: 1000;
+ 
+}
+.header-inner{
+  position: relative;
+  max-width:860px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header-logo{
+  width: 188px;
+  height: 34px;
+  background: url('/images/logo.png') no-repeat center center;
+  background-size: cover;
+  font-size: 0;
+}
+
+.header-buttons,
+#nav{
+  display: none;
+  @media (min-width: map.get($breakpoints, 'md')) {
+    display: block;
+  }
+}
+.header-buttons a{
+  color: #fff;
+  font-size: 16px;
+  font-weight: 900;
+  height: 32px;
+  width: 82px;
+  border-radius: 50px;
+  background-color: #df0000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#nav{
+  ul{
+    display: flex;
+    gap: 0 90px;
+    li{
+      a{
+        color: #fff;
+        font-size: 16px;
+        font-weight: 900;
+      }
+    }
+  }
+}
+
+
+.header-hamburger {
+  @media (min-width: map.get($breakpoints, 'md')) {
+    display: none;
+  }
+}
+
+// 스크롤 시 헤더 스타일
+.header{transition: all 0.3s ease;}
+.header.scrolled {
+  background-color: rgba(255, 255, 255, 0.95);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 15px 14px 15px;
+  
+  #nav{
+  .gnb{
+    li{
+      a{
+        color: #000;
+      }
+    }
+  }
+  }
+}
+
+// 모바일 네비게이션
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 280px;
+  height: 100vh;
+  background-color: #fff;
+  z-index: 9919;
+  transition: right 0.3s ease;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+
+  &.active {
+    right: 0;
+  }
+
+  .mobile-nav-inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    .header-hamburger{
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      button{
+        span{
+          background: #000;
+        }
+      }
+    }
+  }
+
+  // 로그인/회원가입 그룹
+  .mobile-nav-login-group {
+    display: flex;
+    gap: 8px;
+    padding: 80px 20px 20px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .mobile-nav-login,
+  .mobile-nav-join {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.2s ease;
+  }
+
+  .mobile-nav-login {
+    color: #333;
+    background-color: #f5f5f5;
+    border: 1px solid #e0e0e0;
+
+    &:hover {
+      background-color: #e8e8e8;
+      border-color: #d0d0d0;
+    }
+  }
+
+  .mobile-nav-join {
+    color: #fff;
+    background-color: #752FAE;
+    border: 1px solid #752FAE;
+
+    &:hover {
+      background-color: #6719A6;
+      border-color: #6719A6;
+    }
+  }
+
+  .mobile-gnb {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+
+    li {
+      border-bottom: 1px solid #f0f0f0;
+
+      a {
+        display: block;
+        padding: 18px 24px;
+        color: #333;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 500;
+        transition: all 0.2s ease;
+
+        &:hover {
+          background-color: #f8f8f8;
+          color: #752FAE;
+          padding-left: 28px;
+        }
+      }
+    }
+  }
+}
+
+// 모바일 네비게이션 오버레이
+.mobile-nav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
+}

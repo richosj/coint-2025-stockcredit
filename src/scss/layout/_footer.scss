@@ -1,0 +1,110 @@
+// Abstracts
+@use 'sass:map';
+@use 'sass:math';
+@use "sass:string";
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixin' as *;
+@use '../abstracts/functions' as *;
+@use '../abstracts/utilities' as *;
+
+
+.footer{
+  padding: 25px 0;
+  @media (min-width: map.get($breakpoints, 'md')) {
+    .footer-inner{
+      display: flex;
+      flex-direction: column-reverse;
+    }
+    background-color: #e6e6e6;
+    padding: 60px 0;
+  }
+}
+
+.footer-buttons{
+  position: relative;
+  .popover{
+    position: absolute;
+    left: 50%;
+    top: -5px;
+    transform: translateY(-100%);
+    
+  }
+  .popover-trigger{
+    width: 13px;height: 7px;background: url('/images/footer-arrow.png') no-repeat center center;background-size: cover;
+    @media (min-width: map.get($breakpoints, 'md')) {
+      width: 26px;
+      height: 13px;
+    }
+  }
+  .popover-content{
+    background-color: #808080;
+    top: 0;
+    transform: translate(-50%,-100%);
+    color: #fff;
+    font-size: 10px;
+    text-align: center;
+    box-shadow: none;
+    @media (min-width: map.get($breakpoints, 'md')) {
+      font-size: 20px;
+      width: 237px;
+    }
+  }
+  a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 16px;
+    border-radius: 50px;
+    background-color: #df0000;
+    @media (min-width: map.get($breakpoints, 'md')) {
+      padding: 20px 0;
+      font-size: 30px;
+    }
+  }
+}
+
+.footer-logo{
+  width: 72px;
+  height:15px;
+  background: url('/images/footer-logo.png') no-repeat center center;
+  background-size: cover;
+  font-size: 0;
+  margin-bottom: 20px;
+  margin-top: 30px;
+  @media (min-width: map.get($breakpoints, 'md')) {
+    margin-bottom: 25px;
+    margin-top: 0;
+    width: 144px;
+    height: 30px;
+  }
+}
+.footer-content-item{
+  color: #a9b1bb;
+  font-size: 13px;
+  line-height: 1.34;
+  @media (min-width: map.get($breakpoints, 'md')) {
+    font-size: 20px;
+  }
+}
+
+.footer-links{
+  
+  margin-top: 30px;
+  display: flex;
+  gap: 0 10px;
+  @media (min-width: map.get($breakpoints, 'md')) {
+    margin: 30px 0 90px;
+  }
+  a{
+    color: #333;
+    font-size: 13px;
+    line-height: 1.34;
+    font-weight: 500;
+    @media (min-width: map.get($breakpoints, 'md')) {
+      font-size: 16px;
+    }
+  }
+}

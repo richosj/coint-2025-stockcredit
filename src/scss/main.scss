@@ -1,32 +1,34 @@
 // Abstracts
-@import 'abstracts/variables';
-@import 'abstracts/functions';
-@import 'abstracts/mixin';
-@import 'abstracts/utilities';
+@use 'abstracts/variables';
+@use 'abstracts/functions';
+@use 'abstracts/mixin';
+@use 'abstracts/utilities';
 
 // Base
-@import 'base/reset';
-@import 'base/colors';
-@import 'base/grid';
-@import 'base/helpers';
+@use 'base/reset';
+@use 'base/colors';
+@use 'base/grid';
+@use 'base/helpers';
 
 // Components
-@import 'components/badge';
-@import 'components/board';
-@import 'components/buttons';
-@import 'components/dropdown';
-@import 'components/filter-sort';
-@import 'components/form';
-@import 'components/icon';
-@import 'components/modal';
-@import 'components/paging';
-@import 'components/popover';
-@import 'components/tab';
-@import 'components/table';
+@use 'components/badge';
+@use 'components/board';
+@use 'components/buttons';
+@use 'components/dropdown';
+@use 'components/filter-sort';
+@use 'components/form';
+@use 'components/hamburger';
+@use 'components/icon';
+@use 'components/modal';
+@use 'components/paging';
+@use 'components/popover';
+@use 'components/tab';
+@use 'components/table';
 
 // Layout
-// (layout 폴더에 파일이 없으므로 주석 처리)
+@use 'layout/header';
+@use 'layout/footer';
 
 // Pages
-@import 'pages/index';
+@use 'pages/home';
 

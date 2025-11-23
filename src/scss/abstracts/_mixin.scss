@@ -1,6 +1,10 @@
 @use 'sass:map';
 @use 'sass:math';
 @use "sass:string";
+@use '../abstracts/variables' as *;
+@use '../abstracts/functions' as *;
+@use '../abstracts/utilities' as *;
+
 
 // ========================================
 // Mixins & Functions

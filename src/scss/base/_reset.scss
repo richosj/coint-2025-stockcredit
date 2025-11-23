@@ -1,4 +1,7 @@
-
+@use '../abstracts/mixin' as *;
+@use '../abstracts/variables' as *;
+@use '../abstracts/functions' as *;
+@use '../abstracts/utilities' as *;
 
 @font-face {
   font-family: 'Pretendard GOV';
@@ -254,11 +257,12 @@ html {
 body {
   font-family: var(--font-family-base);
   font-size: var(--font-size-base);
-  line-height: var(--line-height-normal);
+  line-height: 1;
   color: var(--color-gray-900);
   background-color: var(--color-white);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.04em;
 }
 
 
@@ -272,9 +276,9 @@ picture,
 video,
 canvas,
 svg {
-  //display: block;
-  //max-width: 100%;
-  //height: auto;
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 button,
