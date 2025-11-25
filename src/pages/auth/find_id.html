@@ -1,0 +1,116 @@
+<!-- @pageTitle 아이디 찾기 -->
+<!-- @pageNote 아이디 찾기 페이지 -->
+<!-- @pageCreated 2025-11-25 -->
+<!-- @pageUpdated 2025-11-25 -->
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    {{> layout/meta}}
+</head>
+
+<body>
+{{> layout/header}}
+<main id="main" class="main">
+    <div class="main-visual">
+        <div class="container">
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide slide-01" style="background-image: url('/images/main/main-visual-01.png');">
+                        <a href="#" style="background-image: url('/images/main/main-visual-01.png');"></a>
+                    </div>
+                    <div class="swiper-slide slide-01" style="background-image: url('/images/main/main-visual-01.png');">
+                        <a href="#" style="background-image: url('/images/main/main-visual-01.png');"></a>
+                    </div>
+                    <div class="swiper-slide slide-01" style="background-image: url('/images/main/main-visual-01.png');">
+                        <a href="#" style="background-image: url('/images/main/main-visual-01.png');"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="main-visual-pagination">
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+        <!-- // swiper-container -->
+    </div>
+    <!-- // main-visual -->
+
+    <div class="breadcrumb">
+        <div class="container">
+            <ol class="breadcrumb-list">
+                <li class="breadcrumb-item">
+                    <a href="/">스탁크레딧 </a>
+                </li>
+                <li class="breadcrumb-item">
+                    <span>아이디찾기 Step1 (본인인증)</span>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+    <div id="sub-layout">
+        <div class="container">
+            <div class="login-container">
+                <form id="find_id-form" class="login-form">
+                    <div id="find_id">
+                        <div class="find_id-content">
+                            <p class="info-message">휴대전화번호는 10이상 11자리 이하로 입력해 주세요</p>
+                            <div class="input-row">
+                                <label for="confirm-name" class="label sr-only">이름</label>
+                                <input type="text" id="confirm-name" name="confirm-name" placeholder="이름을 입력하세요.">
+                            </div>
+                            <div class="birth">
+                                <div class="input-row">
+                                    <label for="confirm-birth" class="label sr-only">생년월일</label>
+                                    <input type="text" id="confirm-birth" name="confirm-birth" placeholder="생년월일 6자리를 입력하세요.">
+                                </div>
+                                <span class="birth-separator">--</span>
+                                <div class="input-row select-row">
+                                    <label for="confirm-gender" class="label sr-only"></label>
+                                    <select id="confirm-gender" name="confirm-gender">
+                                        <option value=""></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="input-row">
+                                <div class="carrier-selector">
+                                    <button type="button" class="carrier-btn" data-carrier="kt">KT</button>
+                                    <button type="button" class="carrier-btn" data-carrier="skt">SKT</button>
+                                    <button type="button" class="carrier-btn" data-carrier="lgu">LGU+</button>
+                                    <button type="button" class="carrier-btn" data-carrier="kt-mvno">
+                                        알뜰폰
+                                        <span class="sub-label">(KT)</span>
+                                    </button>
+                                    <button type="button" class="carrier-btn" data-carrier="skt-mvno">
+                                        알뜰폰
+                                        <span class="sub-label">(SKT)</span>
+                                    </button>
+                                    <button type="button" class="carrier-btn active" data-carrier="lgu-mvno">
+                                        알뜰폰
+                                        <span class="sub-label">(LGU+)</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="input-row">
+                                <label for="confirm-phone" class="label sr-only">전화번호</label>
+                                <input type="text" id="confirm-phone" name="confirm-phone" placeholder="전화번호를 입력하세요.">
+                            </div>
+                        </div>
+                        <div class="input-row">
+                            <button type="submit" class="btn-login">Step2 본인인증</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+{{> layout/footer}}
+
+<script type="module" src="../../js/main.js"></script>
+</body>
+
+</html>
+

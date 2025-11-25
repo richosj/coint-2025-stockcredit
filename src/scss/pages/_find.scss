@@ -6,6 +6,56 @@
 @use '../abstracts/functions' as *;
 @use '../abstracts/utilities' as *;
 
+.info-message {
+  font-size: 18px;
+  font-weight: 500;
+  color: #000;
+}
+
+.find_id-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  .birth {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    &-separator {
+      font-size: 14px;
+      color: #797979;
+
+      @media (min-width: map.get($breakpoints, 'md')) {
+        font-size: 20px;
+      }
+    }
+
+    .input-row {
+      margin-bottom: 0;
+
+      &:first-child {
+        flex: 1;
+      }
+
+      &:last-child {
+        flex: 0 0 auto;
+      }
+    }
+
+    input[type="text"] {
+      width: 100%;
+    }
+
+    select {
+      min-width: 120px;
+
+      @media (min-width: map.get($breakpoints, 'md')) {
+        min-width: 180px;
+      }
+    }
+  }
+}
+
 .carrier-selector {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
