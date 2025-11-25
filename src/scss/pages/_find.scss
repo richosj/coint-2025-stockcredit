@@ -7,9 +7,13 @@
 @use '../abstracts/utilities' as *;
 
 .info-message {
-  font-size: 18px;
+  font-size: 12px;
   font-weight: 500;
   color: #000;
+  @media (min-width: map.get($breakpoints, 'md')) {
+    font-size: 18px;
+    line-height: 1.2;
+  }
 }
 
 .find_id-content {

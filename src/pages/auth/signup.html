@@ -1,0 +1,130 @@
+<!-- @pageTitle 회원가입 -->
+<!-- @pageNote 회원가입 페이지 -->
+<!-- @pageCreated 2025-11-25 -->
+<!-- @pageUpdated 2025-11-25 -->
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    {{> layout/meta}}
+</head>
+
+<body>
+{{> layout/header}}
+<main id="main" class="main">
+    <div class="main-visual">
+        <div class="container">
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide slide-01" style="background-image: url('/images/main/main-visual-01.png');">
+                        <a href="#" style="background-image: url('/images/main/main-visual-01.png');"></a>
+                    </div>
+                    <div class="swiper-slide slide-01" style="background-image: url('/images/main/main-visual-01.png');">
+                        <a href="#" style="background-image: url('/images/main/main-visual-01.png');"></a>
+                    </div>
+                    <div class="swiper-slide slide-01" style="background-image: url('/images/main/main-visual-01.png');">
+                        <a href="#" style="background-image: url('/images/main/main-visual-01.png');"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="main-visual-pagination">
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+        <!-- // swiper-container -->
+    </div>
+    <!-- // main-visual -->
+
+    <div class="breadcrumb">
+        <div class="container">
+            <ol class="breadcrumb-list">
+                <li class="breadcrumb-item">
+                    <a href="/">스탁크레딧 </a>
+                </li>
+                <li class="breadcrumb-item">
+                    <span>회원가입 Step1 (약정동의)</span>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+    <div id="sub-layout">
+        <div class="container">
+            <div class="login-container">
+                <form id="signup-form" class="login-form">
+                    <div id="signup-step1">
+                        <p class="info-message">아래의 약관은 고객님의 권리를 보호하고 의무를 확인하기 위한 내용입니다. </br>
+                        충분히 숙지하신 후 동의하여 주시기 바랍니다.</p>
+                        <div class="input-row signup-content">
+                            <div class="signup-item">
+                                <div class="signup-check">
+                                    <input type="checkbox" id="terms-service" name="terms-service">
+                                    <label for="terms-service">
+                                        <span class="required">[필수]</span> 서비스 이용약관동의
+                                    </label>
+                                </div>
+                                <button type="button" class="signup-arrow" data-modal="termsModal">
+                                    <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 1L7 7L1 13" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="signup-item">
+                                <div class="signup-check">
+                                    <input type="checkbox" id="terms-privacy" name="terms-privacy">
+                                    <label for="terms-privacy">
+                                        <span class="required">[필수]</span> 개인정보수집 및 이용동의
+                                    </label>
+                                </div>
+                                <button type="button" class="signup-arrow" data-terms="privacy" data-modal="privacyModal">
+                                    <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 1L7 7L1 13" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="signup-item">
+                                <div class="signup-check">
+                                    <input type="checkbox" id="terms-unique" name="terms-unique">
+                                    <label for="terms-unique">
+                                        <span class="optional">[선택]</span> 고유식별 정보 처리 동의
+                                    </label>
+                                </div>
+                                <button type="button" class="signup-arrow" data-terms="unique">
+                                    <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 1L7 7L1 13" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="signup-item">
+                                <div class="signup-check">
+                                    <input type="checkbox" id="terms-marketing" name="terms-marketing">
+                                    <label for="terms-marketing">
+                                        <span class="optional">[선택]</span> 광고성 정보 수신 동의
+                                    </label>
+                                </div>
+                                <button type="button" class="signup-arrow" data-terms="marketing">
+                                    <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 1L7 7L1 13" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <p class="error-message">* 회원가입을 위해서는 휴대폰 본인인증을 하셔야 합니다.</p>
+                        <div class="input-row">
+                            <button type="submit" class="btn-login">모든 확인 및 동의합니다</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+{{> layout/footer}}
+
+<script type="module" src="../../js/main.js"></script>
+</body>
+
+</html>
+

@@ -1,0 +1,105 @@
+@use 'sass:map';
+@use 'sass:math';
+@use "sass:string";
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixin' as *;
+@use '../abstracts/functions' as *;
+@use '../abstracts/utilities' as *;
+
+.signup{
+  &-content {
+    display: flex;
+    flex-direction: column;
+
+    .signup-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      @media (min-width: map.get($breakpoints, 'md')) {
+        width: 60%;
+      }
+
+      .signup-check {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex: 1;
+
+        input[type="checkbox"] {
+          width: 24px;
+          height: 24px;
+          border: 2px solid #ddd;
+          border-radius: 50%;
+          appearance: none;
+          cursor: pointer;
+          position: relative;
+          flex-shrink: 0;
+
+          &:checked {
+            background-color: #e60012;
+            border-color: #e60012;
+
+            &::after {
+              content: '';
+              position: absolute;
+              left: 50%;
+              top: 50%;
+              transform: translate(-50%, -50%);
+              width: 6px;
+              height: 10px;
+              border: solid white;
+              border-width: 0 2px 2px 0;
+              transform: translate(-50%, -60%) rotate(45deg);
+            }
+          }
+
+          &:checked + label {
+            .required {
+              color: #e60012;
+            }
+          }
+        }
+
+        label {
+          font-size: 14px;
+          color: #333;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          gap: 4px;
+
+          @media (min-width: map.get($breakpoints, 'md')) {
+            font-size: 16px;
+          }
+
+          .required {
+            color: #999;
+            font-weight: 500;
+            transition: color 0.2s ease;
+          }
+
+          .optional {
+            color: #999;
+            font-weight: 500;
+          }
+        }
+      }
+
+      .signup-arrow {
+        background: none;
+        border: none;
+        padding: 8px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+
+        svg {
+          width: 8px;
+          height: 14px;
+        }
+      }
+    }
+  }
+}

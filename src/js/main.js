@@ -156,4 +156,21 @@ document.addEventListener('DOMContentLoaded', function() {
             this.classList.add('active');
         });
     });
+
+    // 회원가입
+    const signupCheckboxes = document.querySelectorAll('.signup input[type="checkbox"]');
+    const signupArrows = document.querySelectorAll('.signup-arrow');
+
+    signupCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            console.log(`${this.id} 체크 상태:`, this.checked);
+        });
+    });
+
+    signupArrows.forEach(arrow => {
+        arrow.addEventListener('click', function() {
+            const termsType = this.dataset.terms;
+            console.log(`${termsType} 약관 상세보기`);
+        });
+    });
 });
