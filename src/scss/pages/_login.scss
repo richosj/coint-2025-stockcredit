@@ -18,11 +18,13 @@
 }
 
 .login-form{
+  &> div {
   display: flex;
   flex-direction: column;
   gap: 28px;
+  }
   @media (min-width: map.get($breakpoints, 'md')) {
-    gap: 50px;
+    &> div {gap: 50px;}
   }
   .input-row{
     display: flex;
