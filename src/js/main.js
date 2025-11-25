@@ -158,19 +158,68 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // 회원가입
-    const signupCheckboxes = document.querySelectorAll('.signup input[type="checkbox"]');
+    const signupCheckboxes = document.querySelectorAll('.signup-content input[type="checkbox"]');
     const signupArrows = document.querySelectorAll('.signup-arrow');
 
     signupCheckboxes.forEach(checkbox => {
         checkbox.addEventListener('change', function() {
-            console.log(`${this.id} 체크 상태:`, this.checked);
         });
     });
 
     signupArrows.forEach(arrow => {
         arrow.addEventListener('click', function() {
-            const termsType = this.dataset.terms;
-            console.log(`${termsType} 약관 상세보기`);
         });
     });
+
+    const signupForm = document.getElementById('signup-form');
+    const signupStep1 = document.getElementById('signup-step1');
+    const signupStep2 = document.getElementById('signup-step2');
+    const signupStep3 = document.getElementById('signup-step3');
+    const signupStep4 = document.getElementById('signup-step4');
+    const signupStep5 = document.getElementById('signup-step5');
+    const breadcrumbSpan = document.querySelector('.breadcrumb-item span');
+
+    const stepTexts = {
+        1: '회원가입 Step1 (약정동의)',
+        2: '회원가입 Step2 (본인인증)',
+        3: '회원가입 Step3 (문자인증)',
+        4: '회원가입 Step4 (비밀번호 입력)',
+        5: '회원가입 Step5 (가입완료)'
+    };
+
+    if (signupForm && signupStep1 && signupStep2 && signupStep3 && signupStep4 && signupStep5) {
+        signupStep2.style.display = 'none';
+        signupStep3.style.display = 'none';
+        signupStep4.style.display = 'none';
+        signupStep5.style.display = 'none';
+
+        let currentStep = 1;
+
+        signupForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            if (currentStep === 1) {
+                signupStep1.style.display = 'none';
+                signupStep2.style.display = 'flex';
+                currentStep = 2;
+                if (breadcrumbSpan) breadcrumbSpan.textContent = stepTexts[2];
+            } else if (currentStep === 2) {
+                signupStep2.style.display = 'none';
+                signupStep3.style.display = 'flex';
+                currentStep = 3;
+                if (breadcrumbSpan) breadcrumbSpan.textContent = stepTexts[3];
+            } else if (currentStep === 3) {
+                signupStep3.style.display = 'none';
+                signupStep4.style.display = 'flex';
+                currentStep = 4;
+                if (breadcrumbSpan) breadcrumbSpan.textContent = stepTexts[4];
+            } else if (currentStep === 4) {
+                signupStep4.style.display = 'none';
+                signupStep5.style.display = 'flex';
+                currentStep = 5;
+                if (breadcrumbSpan) breadcrumbSpan.textContent = stepTexts[5];
+            } else if (currentStep === 5) {
+            }
+        });
+    }
 });
