@@ -4,7 +4,6 @@
 <!-- @pageUpdated 2025-10-12 -->
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -161,16 +160,13 @@
 		}
 	</style>
 </head>
-
 <body>
 	<div class="container">
 		<h1>2025 식품정보24</h1>
-		
 		<div class="search-box">
 			<input type="text" id="searchInput" placeholder="페이지를 검색하세요...">
 			<button id="searchButton">검색</button>
 		</div>
-
 		<div class="table-wrapper">
 			<table>
 				<thead>
@@ -211,6 +207,62 @@
 						<td>2025-01-15</td>
 						<td>게시판 목록 페이지</td>
 					</tr>
+					<tr>
+						<td><a href="./pages/auth/find_id" target="_blank">pages/auth/find_id</a></td>
+						<td>아이디 찾기</td>
+						<td>2025-11-25</td>
+						<td>2025-11-25</td>
+						<td>아이디 찾기 페이지</td>
+					</tr>
+					<tr>
+						<td><a href="./pages/auth/find_pw" target="_blank">pages/auth/find_pw</a></td>
+						<td>비밀번호 찾기</td>
+						<td>2025-11-25</td>
+						<td>2025-11-25</td>
+						<td>비밀번호 찾기 페이지</td>
+					</tr>
+					<tr>
+						<td><a href="./pages/auth/signup" target="_blank">pages/auth/signup</a></td>
+						<td>회원가입</td>
+						<td>2025-11-25</td>
+						<td>2025-11-25</td>
+						<td>회원가입 페이지</td>
+					</tr>
+					<tr>
+						<td><a href="./pages/service/event/event_list" target="_blank">pages/service/event/event_list</a></td>
+						<td>이벤트 목록</td>
+						<td>2025-11-26</td>
+						<td>2025-11-26</td>
+						<td>이벤트 목록 페이지</td>
+					</tr>
+					<tr>
+						<td><a href="./pages/service/event/event_view" target="_blank">pages/service/event/event_view</a></td>
+						<td>이벤트 게시물</td>
+						<td>2025-11-26</td>
+						<td>2025-11-26</td>
+						<td>이벤트 게시물 페이지</td>
+					</tr>
+					<tr>
+						<td><a href="./pages/service/notice/notice_list" target="_blank">pages/service/notice/notice_list</a></td>
+						<td>공지사항 목록</td>
+						<td>2025-11-25</td>
+						<td>2025-11-25</td>
+						<td>공지사항 목록 페이지</td>
+					</tr>
+					<tr>
+						<td><a href="./pages/service/notice/notice_view" target="_blank">pages/service/notice/notice_view</a></td>
+						<td>공지사항 게시물</td>
+						<td>2025-11-25</td>
+						<td>2025-11-25</td>
+						<td>공지사항 게시물 페이지</td>
+					</tr>
+					<tr>
+						<td><a href="./pages/service/qna/qna_list" target="_blank">pages/service/qna/qna_list</a></td>
+						<td>1:1 문의 목록</td>
+						<td>2025-11-26</td>
+						<td>2025-11-26</td>
+						<td>1:1 문의 목록 페이지</td>
+					</tr>
 				</tbody>
 			</table>
 			<div class="no-results" id="noResults">
@@ -218,7 +270,6 @@
 			</div>
 		</div>
 	</div>
-
 	<script>
 		document.addEventListener('DOMContentLoaded', function () {
 			const searchInput = document.getElementById('searchInput');
@@ -226,11 +277,9 @@
 			const tableBody = document.getElementById('tableBody');
 			const noResults = document.getElementById('noResults');
 			const rows = tableBody.querySelectorAll('tr');
-
 			function performSearch() {
 				const searchTerm = searchInput.value.toLowerCase();
 				let resultsFound = false;
-
 				rows.forEach(row => {
 					const text = row.textContent.toLowerCase();
 					if (text.includes(searchTerm)) {
@@ -240,25 +289,21 @@
 						row.style.display = 'none';
 					}
 				});
-
 				if (resultsFound) {
 					noResults.style.display = 'none';
 				} else {
 					noResults.style.display = 'block';
 				}
 			}
-
 			searchButton.addEventListener('click', performSearch);
 			searchInput.addEventListener('keypress', function (e) {
 				if (e.key === 'Enter') {
 					performSearch();
 				}
 			});
-
 			// 실시간 검색
 			searchInput.addEventListener('input', performSearch);
 		});
 	</script>
 </body>
-
 </html>
