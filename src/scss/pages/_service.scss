@@ -34,6 +34,7 @@
 
 .table td.table-view-cell {
   background-color: #f7f7f7;
+  padding: 20px;
   @media (min-width: map.get($breakpoints, 'md')) {
     padding: 30px;
   }
