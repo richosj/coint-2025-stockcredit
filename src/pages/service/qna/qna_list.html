@@ -1,0 +1,91 @@
+<!-- @pageTitle 1:1 문의 목록 -->
+<!-- @pageNote 1:1 문의 목록 페이지 -->
+<!-- @pageCreated 2025-11-26 -->
+<!-- @pageUpdated 2025-11-26 -->
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	{{> layout/meta}}
+</head>
+
+<body>
+	{{> layout/header}}
+	<main id="main" class="main">
+		<div class="main-visual">
+			<div class="container">
+				<div class="swiper">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide slide-01" style="background-image: url('/images/main/main-visual-01.png');">
+							<a href="#" style="background-image: url('/images/main/main-visual-01.png');"></a>
+						</div>
+						<div class="swiper-slide slide-01" style="background-image: url('/images/main/main-visual-01.png');">
+							<a href="#" style="background-image: url('/images/main/main-visual-01.png');"></a>
+						</div>
+						<div class="swiper-slide slide-01" style="background-image: url('/images/main/main-visual-01.png');">
+							<a href="#" style="background-image: url('/images/main/main-visual-01.png');"></a>
+						</div>
+					</div>
+				</div>
+				<div class="main-visual-pagination">
+					<div class="swiper-pagination"></div>
+				</div>
+			</div>
+			<!-- // swiper-container -->
+		</div>
+		<!-- // main-visual -->
+
+		<div class="breadcrumb">
+			<div class="container">
+				<ol class="breadcrumb-list">
+					<li class="breadcrumb-item">
+						<a href="/">고객센터</a>
+					</li>
+					<li class="breadcrumb-item">
+						<span>1:1 문의</span>
+					</li>
+				</ol>
+			</div>
+		</div>
+
+		<div id="sub-layout">
+			<div class="container">
+               <div class="d-flex align-baseline">
+                   <h2 class="sub-title mr-md">1:1 문의</h2>
+                   <div class="error-message mt-0">회원으로 가입하시면 1:1 문의가 가능합니다.</div>
+               </div>
+				<div class="table-container">
+                    <table class="table">
+                        <colgroup>
+                            <col style="width: 10%;">
+                            <col style="width: 70%;">
+                            <col style="width: 20%;">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>순번</th>
+                                <th>제목</th>
+                                <th>등록일</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="3">
+                                    <div class="col-nodata">등록된 게시물이 없습니다.</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+			</div>
+		</div>
+
+	</main>
+
+	{{> layout/footer}}
+
+	<script type="module" src="/js/main.js"></script>
+</body>
+
+</html>
+

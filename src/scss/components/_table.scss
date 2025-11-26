@@ -46,6 +46,17 @@
   .col-title{
     text-align: left;
   }
+
+  .col-nodata{
+    color: #808080;
+    font-size: 14px;
+    @media (min-width: map.get($breakpoints, 'md')) {
+      font-size: 18px;
+      font-weight: 700;
+      padding: 20px 0;
+    }
+  }
+
   a {
     color: #ff0000;
     text-decoration: underline;
