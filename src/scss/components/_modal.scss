@@ -1,3 +1,11 @@
+@use 'sass:map';
+@use 'sass:math';
+@use "sass:string";
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixin' as *;
+@use '../abstracts/functions' as *;
+@use '../abstracts/utilities' as *;
+
 .modal {
   display: none;
   position: fixed;
@@ -21,11 +29,15 @@
   width: 90%;
   max-width: 650px;
   max-height: 85vh;
-  border-radius: 20px;
-  padding: 50px 40px; /* 원래대로 복구 */
+  border-radius: 10px;
+  padding: 35px 25px;
   overflow: hidden; /* auto에서 hidden으로 변경 */
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
+  @media (min-width: map.get($breakpoints, 'md')) {
+    border-radius: 20px;
+    padding: 50px 40px; /* 원래대로 복구 */
+  }
 }
 
 .modal-body-wrapper {
@@ -69,10 +81,14 @@
 
 .modal-title {
   text-align: center;
-  font-size: 26px;
+  font-size: 20px;
   font-weight: 700;
   color: #333;
-  margin-bottom: 35px;
+  margin-bottom: 20px;
+  @media (min-width: map.get($breakpoints, 'md')) {
+    font-size: 26px;
+    margin-bottom: 35px;
+  }
 }
 
 .modal-body {
@@ -82,22 +98,33 @@
 }
 
 .modal-body p {
-  margin-bottom: 16px;
+  margin-bottom: 8px;
+  @media (min-width: map.get($breakpoints, 'md')) {
+    margin-bottom: 16px;
+  }
 }
 
 .modal-body h3 {
-  font-size: 17px;
+  font-size: 14px;
   font-weight: 700;
   color: #222;
-  margin: 30px 0 18px;
-  line-height: 1.6;
+  margin: 20px 0 12px;
+  line-height: 1.5;
+  @media (min-width: map.get($breakpoints, 'md')) {
+    font-size: 17px;
+    margin: 30px 0 18px;
+  }
 }
 
 .modal-body h4 {
-  font-size: 15px;
+  font-size: 12px;
   font-weight: 600;
   color: #333;
-  margin: 20px 0 12px;
+  margin: 15px 0 5px;
+  @media (min-width: map.get($breakpoints, 'md')) {
+    font-size: 15px;
+    margin: 20px 0 12px;
+  }
 }
 
 .effective-date {
