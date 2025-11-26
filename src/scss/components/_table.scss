@@ -1,3 +1,6 @@
+@use 'sass:map';
+@use 'sass:math';
+@use "sass:string";
 @use '../abstracts/mixin' as *;
 @use '../abstracts/variables' as *;
 @use '../abstracts/functions' as *;
@@ -13,30 +16,39 @@
   table-layout: fixed;
   
   thead {
-    border-top: 2px solid var(--g-95, #131416);
-    background: var(--g-05, #F4F5F6);
+    border-bottom: 2px solid var(--g-95, #999999);
+    background-color: #f2f2f2;
   }
   
   th {
-    font-size: 17px;
+    font-size: 14px;
     padding: 15px 0;
+    @media (min-width: map.get($breakpoints, 'md')) {
+      font-size: 16px;
+      padding: 30px 0;
+    }
 
   }
   tr{
-    border-bottom: 1px solid #B1B8BE;
+    border-bottom: 1px solid #dddddd;
   }
   td {
-    font-size: 17px;
-    padding: 12px 0;
+    font-size: 12px;
+    padding: 15px 0;
     text-align: center;
+    @media (min-width: map.get($breakpoints, 'md')) {
+      font-size: 14px;
+      padding: 30px 0;
+    }
   }
+
   .col-title{
     text-align: left;
   }
-  tbody tr {
-  
+  a {
+    color: #ff0000;
+    text-decoration: underline;
   }
-  
   // 테이블 크기
   &--sm {
     th, td {

@@ -1,0 +1,50 @@
+@use 'sass:map';
+@use 'sass:math';
+@use "sass:string";
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixin' as *;
+@use '../abstracts/functions' as *;
+@use '../abstracts/utilities' as *;
+
+.sub-title {
+  font-weight: 400;
+  font-size: 18px;
+  margin-bottom: 20px;
+  @media (min-width: map.get($breakpoints, 'md')) {
+    font-size: 24px;
+    margin-bottom: 50px;
+  }
+}
+
+.btn-list {
+  margin-top: 30px;
+  height: 35px;
+  padding: 0 30px;
+  color: #fff;
+  background-color: #808080;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 700;
+  @media (min-width: map.get($breakpoints, 'md')) {
+    height: 35px;
+    font-size: 18px;
+    border-radius: 15px;
+  }
+}
+
+.table td.table-view-cell {
+  background-color: #f7f7f7;
+  @media (min-width: map.get($breakpoints, 'md')) {
+    padding: 30px;
+  }
+}
+.table-title {
+  font-weight: 700;
+}
+.table-content {
+  margin: 20px 0 50px 0;
+}
+.table-attached-file {
+  width: 20px;
+  height: 20px;
+}

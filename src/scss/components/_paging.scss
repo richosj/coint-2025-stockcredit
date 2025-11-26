@@ -1,135 +1,12 @@
+@use 'sass:map';
+@use 'sass:math';
+@use "sass:string";
 @use '../abstracts/mixin' as *;
 @use '../abstracts/variables' as *;
 @use '../abstracts/functions' as *;
 @use '../abstracts/utilities' as *;
 
-// ========================================
-// Pagination
-// ========================================
 
-
-
-.pagination {
-  @include flex(center, center);
-  gap:8px;
-  margin-top: 40px;
-  li {
-    list-style: none;
-  }
-
-  // 기본 버튼
-  .page-item {
-    @include flex-center;
-    cursor: pointer;
-    transition: all var(--transition-fast);
-    width: 40px;height: 40px;
-    border-radius: 6px;
-    font-size: 17px;
-    color: #464C53;
-    border: 0;
-    padding: 0;
-    &.ellipsis{
-      font-size: 0;
-      background: url('/images/portal/ellipsis_horizontal.svg') no-repeat center center;
-    }
-    &:hover {
-      color: #000;
-      @include shadow('sm');
-    }
-
-    &.prev,
-    &.next{
-      border: 0;
-      width: auto;
-      .text{
-        color: #464C53;
-        font-size: 17px;
-      }
-    }
-    &.prev{
-      background: url('/images/portal/pagination_prev.svg') no-repeat 0 50%;
-      padding-left: 20px;
-    }
-    &.next{ 
-      background: url('/images/portal/pagination_next.svg') no-repeat right 50%;
-      padding-right: 20px;
-    }
-
-    &.active {
-      color: var(--color-white);
-      background-color: var(--color-brand-primary);
-      border-color: var(--color-primary);
-      cursor: default;
-      @include shadow('sm');
-    }
-
-    &.disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-      pointer-events: none;
-    }
-
-    // 아이콘 포함형 (이전/다음)
-    &.icon {
-      @include flex-center;
-      @include square(36px);
-      padding: 0;
-    }
-  }
-
-  // 크기 변형
-  &--sm {
-    .page-item {
-      min-width: 28px;
-      height: 28px;
-      font-size: var(--font-size-xs);
-    }
-  }
-
-  &--lg {
-    .page-item {
-      min-width: 44px;
-      height: 44px;
-      font-size: var(--font-size-lg);
-    }
-  }
-
-  // 둥근형
-  &--rounded {
-    .page-item {
-      border-radius: var(--radius-full);
-    }
-  }
-
-  // 아웃라인 스타일
-  &--outline {
-    .page-item {
-      background: transparent;
-      border: 1px solid var(--color-gray-400);
-      color: var(--color-gray-700);
-
-      &:hover {
-        border-color: var(--color-primary);
-        color: var(--color-primary);
-      }
-
-      &.active {
-        background: var(--color-primary);
-        color: var(--color-white);
-      }
-    }
-  }
-
-  // 가운데 정렬
-  &--center {
-    justify-content: center;
-  }
-
-  // 오른쪽 정렬
-  &--right {
-    justify-content: flex-end;
-  }
-}
 
 // ========================================
 // 예시 HTML
@@ -147,3 +24,85 @@
   </button></li>
 </ul>
 */
+
+// ========================================
+// Pagination
+// ========================================
+
+.pagination {
+  @include flex(center, center);
+  gap: 6px;
+  margin-top: 40px;
+
+  li {
+    list-style: none;
+  }
+
+  .page-item {
+    @include flex-center;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    padding: 0 10px;
+    min-width: 20px;
+    height: 22px;
+    border-radius: 8px;
+    font-weight: 500;
+    color: #fff;
+    border: 0;
+    background-color: #e5e5e5;
+    font-size: 12px;
+
+    &:hover:not(.active):not(.disabled) {
+      background-color: #d5d5d5;
+    }
+
+    &.prev,
+    &.next {
+      min-width: auto;
+      width: auto;
+      height: auto;
+      background: none;
+      padding: 0;
+      border: 0;
+
+      svg {
+        width: 24px;
+        height: 24px;
+        fill: none;
+        stroke: #999;
+        stroke-width: 2.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      &:hover:not(.disabled) {
+        background: none;
+        svg {
+          stroke: #666;
+        }
+      }
+    }
+
+    &.active {
+      color: #fff;
+      background-color: #898989;
+      font-weight: 600;
+      cursor: default;
+    }
+
+    &.icon {
+      background-color: transparent;
+      padding: 0;
+    }
+
+    &.disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+  }
+
+  &--center {
+    justify-content: center;
+  }
+}
