@@ -1,0 +1,69 @@
+<!-- @pageTitle 마이페이지 최근비교종목 -->
+<!-- @pageNote 공지사항 목록 페이지 -->
+<!-- @pageCreated 2025-11-25 -->
+<!-- @pageUpdated 2025-11-25 -->
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	{{> layout/meta}}
+</head>
+
+<body>
+	{{> layout/header}}
+	<main id="main" class="main">
+		{{> layout/subVisual}}
+		
+
+		<div class="breadcrumb">
+			<div class="container">
+				<ol class="breadcrumb-list">
+					<li class="breadcrumb-item">
+						<a href="/">마이페이지</a>
+					</li>
+					<li class="breadcrumb-item">
+						<span>최근비교종목</span>
+					</li>
+				</ol>
+			</div>
+		</div>
+
+		<div id="sub-layout">
+			<div class="container">
+				<h2 class="sub-title">최근비교종목</h2>
+				<div class="table-container">
+					<table class="table">
+						<colgroup>
+							<col style="width: 30%;">
+							<col style="width: auto">
+							<col style="width: 20%;">
+						</colgroup>
+						<thead>
+							<tr>
+								<th>일자</th>
+								<th>보유종목</th>
+								<th>보유수량</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>2025-11-20
+                  14:50:43</td>
+								<td>GH신소재</td>
+								<td>60,000</td>
+							</tr>
+						</tbody>
+					</table>
+					{{> components/paging}}
+				</div>
+			</div>
+		</div>
+
+	</main>
+
+	{{> layout/footer}}
+
+	<script type="module" src="/js/main.js"></script>
+</body>
+
+</html>

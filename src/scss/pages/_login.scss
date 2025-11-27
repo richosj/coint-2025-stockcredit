@@ -125,6 +125,10 @@
     font-weight: 700;
     border-radius: 10px;
     border: 1px solid #eee;
+    &:disabled {
+      background-color: #ffe0e0;
+      border-color: #ffe0e0;
+    }
     @media (min-width: map.get($breakpoints, 'md')) {
       height: 90px;
       font-size: 28px;

@@ -1,7 +1,7 @@
-<!-- @pageTitle 템플릿 -->
-<!-- @pageNote 템플릿 페이지 -->
-<!-- @pageCreated 2025-11-28 -->
-<!-- @pageUpdated 2025-11-28 -->
+<!-- @pageTitle 공지사항 목록 -->
+<!-- @pageNote 공지사항 목록 페이지 -->
+<!-- @pageCreated 2025-11-25 -->
+<!-- @pageUpdated 2025-11-25 -->
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -126,8 +126,71 @@
 	    </div>
 	  </div>
 	</nav>
-	<!-- // mobile-nav -->
-	
+	<!-- // mobile-nav -->	<main id="main" class="main">
+		<div class="subVisual">
+		</div>		
+
+		<div class="breadcrumb">
+			<div class="container">
+				<ol class="breadcrumb-list">
+					<li class="breadcrumb-item">
+						<a href="/">고객센터</a>
+					</li>
+					<li class="breadcrumb-item">
+						<span>공지사항</span>
+					</li>
+				</ol>
+			</div>
+		</div>
+
+		<div id="sub-layout">
+			<div class="container">
+				<h2 class="sub-title">공지사항</h2>
+				<div class="table-container">
+					<table class="table">
+						<colgroup>
+							<col style="width: 10%;">
+							<col style="width: 70%;">
+							<col style="width: 20%;">
+						</colgroup>
+						<thead>
+							<tr>
+								<th>순번</th>
+								<th>제목</th>
+								<th>등록일</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td class="text-left"><a href="#">스탁크레딧에서 알려드립니다.</a></td>
+								<td>5/30/2025</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td class="text-left"><a href="#">스탁크레딧에서 알려드립니다.</a></td>
+								<td>5/30/2025</td>
+							</tr>
+						</tbody>
+					</table>
+					<ul class="pagination pagination--center">
+					  <li><button class="page-item icon" aria-label="이전">
+					      <svg viewBox="0 0 24 24">
+					        <path d="M15 18l-6-6 6-6" />
+					      </svg>
+					    </button></li>
+					  <li><button class="page-item">1</button></li>
+					  <li><button class="page-item active">2</button></li>
+					  <li><button class="page-item icon" aria-label="다음">
+					      <svg viewBox="0 0 24 24">
+					        <path d="M9 6l6 6-6 6" />
+					      </svg>
+					    </button></li>
+					</ul>				</div>
+			</div>
+		</div>
+
+	</main>
 
 	<footer id="footer" class="footer">
 		<div class="container">
@@ -259,9 +322,7 @@
 				</div>
 			</div>
 		</div>
-	</div>	
-
+	</div>
 </body>
 
 </html>
-

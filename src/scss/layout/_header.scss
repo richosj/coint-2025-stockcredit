@@ -35,7 +35,7 @@ body{background-color: #f2f2f2;}
   font-size: 0;
 }
 
-.header-buttons,
+
 #nav{
   display: none;
   @media (min-width: map.get($breakpoints, 'md')) {
@@ -50,9 +50,12 @@ body{background-color: #f2f2f2;}
   padding: 0 15px;
   border-radius: 50px;
   background-color: #df0000;
-  display: flex;
   justify-content: center;
   align-items: center;
+  display: none;
+  @media (min-width: map.get($breakpoints, 'md')) {
+    display: flex;
+  }
   a:first-child {
     position: relative;
     padding-right: 16px;

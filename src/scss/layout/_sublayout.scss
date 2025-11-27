@@ -18,3 +18,17 @@
     padding: 60px 0;
   }
 }
+
+.subVisual{
+  background: url('/images/banner.png') no-repeat center center;
+  background-size: cover;
+  height: 210px;
+  margin: 0 15px;
+  border-radius: 15px;
+  overflow: hidden;
+  @media (min-width: map.get($breakpoints, 'md')) {
+    height: 310px;
+    margin: 0;
+    border-radius: 0;
+  }
+}
