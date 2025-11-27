@@ -1,7 +1,7 @@
-<!-- @pageTitle 템플릿 -->
-<!-- @pageNote 템플릿 페이지 -->
-<!-- @pageCreated 2025-11-28 -->
-<!-- @pageUpdated 2025-11-28 -->
+<!-- @pageTitle 회원가입 -->
+<!-- @pageNote 회원가입 페이지 -->
+<!-- @pageCreated 2025-11-25 -->
+<!-- @pageUpdated 2025-11-25 -->
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -126,8 +126,172 @@
 	    </div>
 	  </div>
 	</nav>
-	<!-- // mobile-nav -->
-	
+	<!-- // mobile-nav -->	<main id="main" class="main">
+		<div class="subVisual">
+		</div>
+
+		<div class="breadcrumb">
+			<div class="container">
+				<ol class="breadcrumb-list">
+					<li class="breadcrumb-item">
+						<a href="/">스탁크레딧 </a>
+					</li>
+					<li class="breadcrumb-item">
+						<span>회원가입 Step1 (약정동의)</span>
+					</li>
+				</ol>
+			</div>
+		</div>
+
+		<div id="sub-layout">
+			<div class="container">
+				<div class="login-container">
+					<form id="signup-form" class="login-form">
+						<div id="signup-step1">
+							<p class="info-message">아래의 약관은 고객님의 권리를 보호하고 의무를 확인하기 위한 내용입니다. </br>
+								충분히 숙지하신 후 동의하여 주시기 바랍니다.</p>
+							<div class="input-row signup-terms">
+								<div class="signup-item">
+									<div class="signup-check">
+										<input type="checkbox" id="terms-service" name="terms-service">
+										<label for="terms-service">
+											<span class="required">[필수]</span> 서비스 이용약관동의
+										</label>
+									</div>
+									<button type="button" class="signup-arrow" data-modal="termsModal">
+										<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M1 1L7 7L1 13" stroke="#999" stroke-width="2" stroke-linecap="round"
+												stroke-linejoin="round" />
+										</svg>
+									</button>
+								</div>
+								<div class="signup-item">
+									<div class="signup-check">
+										<input type="checkbox" id="terms-privacy" name="terms-privacy">
+										<label for="terms-privacy">
+											<span class="required">[필수]</span> 개인정보수집 및 이용동의
+										</label>
+									</div>
+									<button type="button" class="signup-arrow" data-terms="privacy" data-modal="privacyModal">
+										<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M1 1L7 7L1 13" stroke="#999" stroke-width="2" stroke-linecap="round"
+												stroke-linejoin="round" />
+										</svg>
+									</button>
+								</div>
+								<div class="signup-item">
+									<div class="signup-check">
+										<input type="checkbox" id="terms-unique" name="terms-unique">
+										<label for="terms-unique">
+											<span class="optional">[선택]</span> 고유식별 정보 처리 동의
+										</label>
+									</div>
+									<button type="button" class="signup-arrow" data-terms="unique">
+										<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M1 1L7 7L1 13" stroke="#999" stroke-width="2" stroke-linecap="round"
+												stroke-linejoin="round" />
+										</svg>
+									</button>
+								</div>
+								<div class="signup-item">
+									<div class="signup-check">
+										<input type="checkbox" id="terms-marketing" name="terms-marketing">
+										<label for="terms-marketing">
+											<span class="optional">[선택]</span> 광고성 정보 수신 동의
+										</label>
+									</div>
+									<button type="button" class="signup-arrow" data-terms="marketing">
+										<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M1 1L7 7L1 13" stroke="#999" stroke-width="2" stroke-linecap="round"
+												stroke-linejoin="round" />
+										</svg>
+									</button>
+								</div>
+							</div>
+							<p class="error-message">* 회원가입을 위해서는 휴대폰 본인인증을 하셔야 합니다.</p>
+							<div class="input-row">
+								<button type="submit" class="btn-login">모든 확인 및 동의합니다</button>
+							</div>
+						</div>
+						<div id="signup-step2">
+							<div class="input-row">
+								<label for="confirm-id" class="label">아이디</label>
+								<input type="text" id="confirm-id" name="confirm-id" placeholder="아이디(이메일)를 입력하세요.">
+							</div>
+							<div class="input-row">
+								<label for="confirm-phone" class="label">전화번호</label>
+								<input type="text" id="confirm-phone" name="confirm-phone" placeholder="전화번호를 입력하세요.">
+							</div>
+							<div class="input-row">
+								<div class="carrier-selector">
+									<button type="button" class="carrier-btn" data-carrier="kt">KT</button>
+									<button type="button" class="carrier-btn" data-carrier="skt">SKT</button>
+									<button type="button" class="carrier-btn" data-carrier="lgu">LGU+</button>
+									<button type="button" class="carrier-btn" data-carrier="kt-mvno">
+										알뜰폰
+										<span class="sub-label">(KT)</span>
+									</button>
+									<button type="button" class="carrier-btn" data-carrier="skt-mvno">
+										알뜰폰
+										<span class="sub-label">(SKT)</span>
+									</button>
+									<button type="button" class="carrier-btn active" data-carrier="lgu-mvno">
+										알뜰폰
+										<span class="sub-label">(LGU+)</span>
+									</button>
+								</div>
+							</div>
+							<div class="input-row">
+								<button type="submit" class="btn-login">본인인증</button>
+							</div>
+						</div>
+						<div id="signup-step3">
+							<div class="input-row">
+								<label for="verification-code" class="label">인증번호</label>
+								<input type="text" id="verification-code" name="verification-code" placeholder="인증번호를 입력하세요.">
+							</div>
+							<div class="input-row">
+								<button type="submit" class="btn-login">비밀번호입력</button>
+							</div>
+						</div>
+						<div id="signup-step4">
+							<div class="input-row">
+								<label for="signup-id" class="label">아이디</label>
+								<input type="text" id="signup-id" name="signup-id" placeholder="아이디(이메일)를 입력하세요.">
+							</div>
+							<div class="input-row">
+								<label for="signup-password" class="label">비밀번호</label>
+								<input type="password" id="signup-password" name="signup-password" placeholder="비밀번호를 입력해주세요.">
+								<div class="error-message">(비밀번호를 6자리 이상 입력해 주세요)</div>
+							</div>
+							<div class="input-row">
+								<label for="confirm-password" class="label">비밀번호 확인</label>
+								<input type="password" id="confirm-password" name="confirm-password" placeholder="비밀번호를 입력해주세요.">
+							</div>
+							<div class="input-row">
+								<button type="submit" class="btn-login">가입하기</button>
+							</div>
+						</div>
+						<div id="signup-step5">
+							<div class="input-row signup-content">
+								<div class="signup-notice">
+									<p>스탁크레딧에 회원으로 가입해 주셔서 감사합니다.</p>
+									<p>저희 스탁크레딧은 중고사 상품 대출비교 플랫폼으로</p>
+									<p>고객님에게 정확하게 따라하고 바로 서비스를 제공하고자</p>
+									<p>최선을 다하고 있습니다.</p>
+								</div>
+							</div>
+							<div class="login-links signup-links">
+								<a href="#" class="login-link signup-link">홈으로</a>
+								<button type="submit" class="btn-login">로그인</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+	</main>
 
 	<footer id="footer" class="footer">
 		<div class="container">
@@ -259,9 +423,7 @@
 				</div>
 			</div>
 		</div>
-	</div>	
-
+	</div>
 </body>
 
 </html>
-

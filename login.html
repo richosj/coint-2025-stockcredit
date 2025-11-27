@@ -1,7 +1,7 @@
-<!-- @pageTitle 템플릿 -->
-<!-- @pageNote 템플릿 페이지 -->
-<!-- @pageCreated 2025-11-28 -->
-<!-- @pageUpdated 2025-11-28 -->
+<!-- @pageTitle 로그인 -->
+<!-- @pageNote 로그인 페이지 -->
+<!-- @pageCreated 2025-01-15 -->
+<!-- @pageUpdated 2025-01-15 -->
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -126,8 +126,55 @@
 	    </div>
 	  </div>
 	</nav>
-	<!-- // mobile-nav -->
-	
+	<!-- // mobile-nav -->	<main id="main" class="main">
+		<div class="subVisual">
+		</div>
+		<div class="breadcrumb">
+			<div class="container">
+				<ol class="breadcrumb-list">
+					<li class="breadcrumb-item">
+						<a href="/">스탁크레딧 </a>
+					</li>
+					<li class="breadcrumb-item">
+						<span>로그인</span>
+					</li>
+				</ol>
+			</div>
+		</div>
+
+		<div id="sub-layout">
+			<div class="container">
+				<div class="login-container">
+					<form id="login-form" class="login-form">
+						<div>
+							<div class="input-row">
+								<label for="login-id" class="label">아이디</label>
+								<input type="text" id="login-id" name="login-id" placeholder="아이디(이메일)를 입력하세요.">
+								<div class="login-id-save">
+									<input type="checkbox" id="login-id-save" name="login-id-save">
+									<label for="login-id-save"></label>아이디 저장</label>
+								</div>
+								<div class="error-message">(아이디는 숫자 6자리를 입력하세요)</div>
+							</div>
+							<div class="input-row">
+								<label for="login-password" class="label">비밀번호</label>
+								<input type="password" id="login-password" name="login-password" placeholder="비밀번호를 입력해주세요.">
+								<div class="error-message">(숫자 6자리를 입력하세요)</div>
+							</div>
+							<div class="input-row">
+								<button type="submit" class="btn-login">로그인</button>
+							</div>
+						</div>
+					</form>
+					<div class="login-links">
+						<a href="#" class="login-link">아이디 찾기</a>
+						<a href="#" class="login-link">비밀번호 찾기</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</main>
 
 	<footer id="footer" class="footer">
 		<div class="container">
@@ -259,9 +306,7 @@
 				</div>
 			</div>
 		</div>
-	</div>	
-
+	</div>
 </body>
 
 </html>
-

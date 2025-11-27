@@ -49,6 +49,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
   const hamburgerMenus = document.querySelectorAll(".header-hamburger .hamburger-menu");
   const mobileNav = document.querySelector(".mobile-nav");
+  const menuClose = document.querySelector(".btn-back");
   const body = document.body;
   let overlay = document.querySelector(".mobile-nav-overlay");
   if (!overlay) {
@@ -72,6 +73,13 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     });
   });
+  if (menuClose) {
+    menuClose.addEventListener("click", function() {
+      mobileNav.classList.remove("active");
+      overlay.classList.remove("active");
+      body.style.overflow = "";
+    });
+  }
   overlay.addEventListener("click", function() {
     if (mobileNav) {
       mobileNav.classList.remove("active");
