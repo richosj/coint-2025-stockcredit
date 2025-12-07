@@ -1,0 +1,132 @@
+<!-- @pageTitle 대출신청 상품 확인 -->
+<!-- @pageNote 대출신청 상품 확인 페이지 -->
+<!-- @pageCreated 2025-11-28 -->
+<!-- @pageUpdated 2025-11-28 -->
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	{{> layout/meta}}
+</head>
+
+<body>
+	{{> layout/header}}
+	<main id="main" class="main">
+		{{> layout/subVisual}}
+
+		<div class="breadcrumb">
+			<div class="container">
+				<ol class="breadcrumb-list">
+					<li class="breadcrumb-item">
+						<a href="/">홈</a>
+					</li>
+					<li class="breadcrumb-item">
+						<span>대출신청 상품 확인</span>
+					</li>
+				</ol>
+			</div>
+		</div>
+
+		<div id="sub-layout">
+			<div class="container">
+				<div class="loan-application-page">
+					<h2 class="page-title">대출신청 상품 확인</h2>
+					<!-- 하나의 큰 카드 -->
+					<div class="product-card">
+						<!-- 상품 정보 -->
+						<div class="product-info-block">
+							<div class="company-logo">
+								<div class="logo-icon"><img src="https://m.dbgroup.co.kr/images/common/h1_logo.png" alt=""></div>
+								<h3 class="product-title">DB증권 주식담보대출</h3>
+							</div>
+						</div>
+
+						<!-- 대출 상세 테이블 -->
+						<div class="loan-details-table">
+							<table class="loan-table">
+								<thead>
+									<tr>
+										<th class="bdb-none">종목명</th>
+										<th class="bdb-none">금액(만)</th>
+										<th class="bdb-none">담보(%)</th>
+										<th class="bdb-none" colspan="3">금리</th>
+									</tr>
+									<tr class="sub-header">
+										<th></th>
+										<th></th>
+										<th></th>
+										<th>30일</th>
+										<th>90일</th>
+										<th>180일</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>삼성전자</td>
+										<td>6,180</td>
+										<td>140</td>
+										<td>8.59</td>
+										<td>8.59</td>
+										<td>8.59</td>
+									</tr>
+									<tr>
+										<td>ACE TDF 2030액티브</td>
+										<td>6,180</td>
+										<td>140</td>
+										<td>8.59</td>
+										<td>8.59</td>
+										<td>8.59</td>
+									</tr>
+									<tr class="total-row">
+										<td></td>
+										<td>6,180</td>
+										<td>140</td>
+										<td>8.59</td>
+										<td>8.59</td>
+										<td>8.59</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<!-- // product-card -->
+					
+					<div class="product-info-section">
+						<div class="info-notes">
+							<p class="info-note"><span class="note-asterisk">*</span>개인별 대출한도는 최대 100,000만원입니다.</p>
+							<p class="info-note highlight"><span class="note-asterisk">*</span>최대한도에 맞춰, 금리등 가장 유리하게 종목별로 대출금을 <br>배정해 추천드렸습니다.</p>
+						</div>
+	
+						<!-- 상품 설명서 섹션 -->
+						<div class="product-description-section">
+							<h4 class="description-title">담보대출상품설명서</h4>
+							<p class="description-text">본 상품의 상세내용은 아래 "상품설명서 다운로드" 버튼을 <br>클릭하여 다운로드 및 확인이 가능합니다.</p>
+							<button class="btn-download" type="button">상품설명서 다운로드</button>
+						</div>
+					</div>
+				</div>
+				<!-- 액션 버튼 -->
+				<div class="action-section">
+					<div class="final-disclaimer">
+						<p class="disclaimer-text"><span class="note-asterisk">*</span>위의 조건은 증권사 심사 결과에 따라 차이가 있을 수 있습니다.</p>
+					</div>
+
+					<p class="action-question">대출을 신청 하시겠습니까?</p>
+					<div class="action-buttons">
+						<button class="btn-securities-list" type="button">증권사 리스트</button>
+						<button class="btn-loan-apply" type="button">대출신청</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</main>
+
+	{{> layout/footer}}
+
+	<script type="module" src="/js/main.js"></script>
+</body>
+
+</html>
+

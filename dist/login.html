@@ -50,16 +50,38 @@
 	
 	    <nav id="nav">
 	      <ul id="gnb" class="gnb">
-	        <li><a href="#">대출비교 서비스 </a></li>
-	        <li><a href="#">고객센터</a></li>
-	        <li><a href="#">마이페이지</a></li>
+	        <li><a href="#">대출비교 서비스 </a>
+	          <ul class="sub-menu">
+	            <li><a href="#">증권사 담보대출 비교-대고객</a></li>
+	            <li><a href="#">증권사 담보대출 비교</a></li>
+	            <li><a href="#">증권사 신용대출 비교</a></li>
+	            <li><a href="#">스탁론 비교</a></li>
+	          </ul>
+	        </li>
+	        <li><a href="#">고객센터</a>
+	          <ul class="sub-menu">
+	            <li><a href="#">공지사항</a></li>
+	            <li><a href="#">1:1문의</a></li>
+	            <li><a href="#">이벤트안내</a></li>
+	          </ul>
+	        </li>
+	        <li><a href="#">마이페이지</a>
+	          <ul class="sub-menu">
+	            <li><a href="#">최근비교종목</a></li>
+	            <li><a href="#">나의 정보</a></li>
+	          </ul>
+	        </li>
 	      </ul>
 	    </nav>
 	    <!-- // nav -->
 	
-	    <div class="header-buttons">
-	      <a href="#" class="#">회원가입</a>
-	      <a href="#" class="#">로그인</a>
+	    <div class="header-buttons logout">
+	      <!-- <a href="#" class="#">회원가입</a>
+	      <a href="#" class="#">로그인</a> -->
+	      <a href="#" class="logout-a">
+	        <span class="text">djaflkasjlk</span>
+	        <span class="icon">x</span>
+	      </a>
 	    </div>
 	
 	    <div class="header-hamburger">
@@ -71,6 +93,8 @@
 	    </div>
 	    <!-- // header-hamburger -->
 	  </div>
+	
+	  <div class="header-bg"></div>
 	</header>
 	<!-- // header -->
 	
@@ -307,6 +331,97 @@
 			</div>
 		</div>
 	</div>
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			const loginForm = document.getElementById('login-form');
+			const loginId = document.getElementById('login-id');
+			const loginPassword = document.getElementById('login-password');
+			const submitButton = document.querySelector('#login-form .btn-login');
+
+			// 에러 메시지 표시 함수
+			function showError(input, message) {
+				let errorDiv = input.parentElement.querySelector('.error-message');
+				if (errorDiv) {
+					errorDiv.textContent = message;
+					errorDiv.style.display = 'block';
+					errorDiv.style.color = '#df0000';
+				}
+				input.style.borderColor = '#df0000';
+			}
+
+			// 에러 메시지 숨기기
+			function hideError(input) {
+				const errorDiv = input.parentElement.querySelector('.error-message');
+				if (errorDiv) {
+					errorDiv.style.display = 'none';
+				}
+				input.style.borderColor = '';
+			}
+
+			// 이메일 유효성 검사
+			function validateEmail(email) {
+				const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+				return emailRegex.test(email);
+			}
+
+			// 실시간 검증
+			if (loginId) {
+				loginId.addEventListener('blur', function() {
+					if (this.value.trim() && !validateEmail(this.value.trim())) {
+						showError(this, '(올바른 이메일 형식이 아닙니다)');
+					} else if (this.value.trim()) {
+						hideError(this);
+					}
+				});
+			}
+
+			if (loginPassword) {
+				loginPassword.addEventListener('input', function() {
+					if (this.value.length > 0 && this.value.length < 6) {
+						showError(this, '(비밀번호를 6자리 이상 입력해 주세요)');
+					} else if (this.value.length >= 6) {
+						hideError(this);
+					}
+				});
+			}
+
+			// 폼 제출 검증
+			if (loginForm) {
+				loginForm.addEventListener('submit', function(e) {
+					e.preventDefault();
+
+					let isValid = true;
+
+					// 아이디 검증
+					if (!loginId || !loginId.value.trim()) {
+						if (loginId) showError(loginId, '(아이디(이메일)를 입력해주세요)');
+						isValid = false;
+					} else if (!validateEmail(loginId.value.trim())) {
+						showError(loginId, '(올바른 이메일 형식이 아닙니다)');
+						isValid = false;
+					} else {
+						hideError(loginId);
+					}
+
+					// 비밀번호 검증
+					if (!loginPassword || !loginPassword.value.trim()) {
+						if (loginPassword) showError(loginPassword, '(비밀번호를 입력해주세요)');
+						isValid = false;
+					} else if (loginPassword.value.length < 6) {
+						showError(loginPassword, '(비밀번호를 6자리 이상 입력해 주세요)');
+						isValid = false;
+					} else {
+						hideError(loginPassword);
+					}
+
+					if (isValid) {
+						alert('로그인 성공!');
+						// 실제 로그인 로직으로 대체
+					}
+				});
+			}
+		});
+	</script>
 </body>
 
 </html>

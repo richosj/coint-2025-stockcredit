@@ -111,9 +111,27 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     }, false);
   }
+  const headerBg = document.querySelector(".header-bg");
+  const nav = document.querySelector("#nav");
+  const headerElement = document.querySelector(".header");
+  if (nav && headerBg && headerElement) {
+    nav.addEventListener("mouseenter", function() {
+      headerElement.classList.add("menu-open");
+      headerBg.classList.add("active");
+    });
+    nav.addEventListener("mouseleave", function() {
+      headerElement.classList.remove("menu-open");
+      headerBg.classList.remove("active");
+    });
+    headerBg.addEventListener("click", function() {
+      headerElement.classList.remove("menu-open");
+      headerBg.classList.remove("active");
+    });
+  }
   const modalTriggers = document.querySelectorAll("[data-modal]");
   modalTriggers.forEach((trigger) => {
-    trigger.addEventListener("click", function() {
+    trigger.addEventListener("click", function(e) {
+      e.preventDefault();
       const modalId = this.getAttribute("data-modal");
       const modal = document.getElementById(modalId);
       if (modal) {
@@ -198,33 +216,210 @@ document.addEventListener("DOMContentLoaded", function() {
     5: "회원가입 Step5 (가입완료)"
   };
   if (signupForm && signupStep1 && signupStep2 && signupStep3 && signupStep4 && signupStep5) {
+    let showError2 = function(input, message) {
+      let errorDiv = input.parentElement.querySelector(".error-message");
+      if (!errorDiv || errorDiv.textContent.includes("회원가입을 위해서는")) {
+        errorDiv = document.createElement("div");
+        errorDiv.className = "error-message";
+        input.parentElement.appendChild(errorDiv);
+      }
+      errorDiv.textContent = message;
+      errorDiv.style.display = "block";
+      errorDiv.style.color = "#df0000";
+      input.style.borderColor = "#df0000";
+    }, hideError2 = function(input) {
+      const errorDiv = input.parentElement.querySelector(".error-message");
+      if (errorDiv && !errorDiv.textContent.includes("회원가입을 위해서는")) {
+        errorDiv.style.display = "none";
+      }
+      input.style.borderColor = "";
+    }, validateEmail2 = function(email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    }, validatePhone2 = function(phone) {
+      const phoneRegex = /^[0-9]{10,11}$/;
+      return phoneRegex.test(phone.replace(/[^0-9]/g, ""));
+    }, validateStep12 = function() {
+      const termsService = document.getElementById("terms-service");
+      const termsPrivacy = document.getElementById("terms-privacy");
+      if (!termsService || !termsService.checked) {
+        alert("서비스 이용약관에 동의해주세요.");
+        return false;
+      }
+      if (!termsPrivacy || !termsPrivacy.checked) {
+        alert("개인정보수집 및 이용동의에 동의해주세요.");
+        return false;
+      }
+      return true;
+    }, validateStep22 = function() {
+      const confirmId2 = document.getElementById("confirm-id");
+      const confirmPhone2 = document.getElementById("confirm-phone");
+      const carrierBtn = document.querySelector(".carrier-btn.active");
+      if (!confirmId2 || !confirmId2.value.trim()) {
+        if (confirmId2) showError2(confirmId2, "아이디(이메일)를 입력해주세요.");
+        return false;
+      }
+      if (!validateEmail2(confirmId2.value.trim())) {
+        showError2(confirmId2, "올바른 이메일 형식이 아닙니다.");
+        return false;
+      }
+      hideError2(confirmId2);
+      if (!confirmPhone2 || !confirmPhone2.value.trim()) {
+        if (confirmPhone2) showError2(confirmPhone2, "전화번호를 입력해주세요.");
+        return false;
+      }
+      if (!validatePhone2(confirmPhone2.value)) {
+        showError2(confirmPhone2, "올바른 전화번호 형식이 아닙니다.");
+        return false;
+      }
+      hideError2(confirmPhone2);
+      if (!carrierBtn) {
+        alert("통신사를 선택해주세요.");
+        return false;
+      }
+      return true;
+    }, validateStep32 = function() {
+      const verificationCode = document.getElementById("verification-code");
+      if (!verificationCode || !verificationCode.value.trim()) {
+        if (verificationCode) showError2(verificationCode, "인증번호를 입력해주세요.");
+        return false;
+      }
+      if (verificationCode.value.trim().length < 4) {
+        showError2(verificationCode, "인증번호는 4자리 이상 입력해주세요.");
+        return false;
+      }
+      hideError2(verificationCode);
+      return true;
+    }, validateStep42 = function() {
+      const signupId2 = document.getElementById("signup-id");
+      const signupPassword2 = document.getElementById("signup-password");
+      const confirmPassword2 = document.getElementById("confirm-password");
+      if (!signupId2 || !signupId2.value.trim()) {
+        if (signupId2) showError2(signupId2, "아이디(이메일)를 입력해주세요.");
+        return false;
+      }
+      if (!validateEmail2(signupId2.value.trim())) {
+        showError2(signupId2, "올바른 이메일 형식이 아닙니다.");
+        return false;
+      }
+      hideError2(signupId2);
+      if (!signupPassword2 || !signupPassword2.value.trim()) {
+        if (signupPassword2) showError2(signupPassword2, "비밀번호를 입력해주세요.");
+        return false;
+      }
+      if (signupPassword2.value.length < 6) {
+        showError2(signupPassword2, "비밀번호를 6자리 이상 입력해 주세요.");
+        return false;
+      }
+      hideError2(signupPassword2);
+      if (!confirmPassword2 || !confirmPassword2.value.trim()) {
+        if (confirmPassword2) showError2(confirmPassword2, "비밀번호 확인을 입력해주세요.");
+        return false;
+      }
+      if (signupPassword2.value !== confirmPassword2.value) {
+        showError2(confirmPassword2, "비밀번호가 일치하지 않습니다.");
+        return false;
+      }
+      hideError2(confirmPassword2);
+      return true;
+    };
+    var showError = showError2, hideError = hideError2, validateEmail = validateEmail2, validatePhone = validatePhone2, validateStep1 = validateStep12, validateStep2 = validateStep22, validateStep3 = validateStep32, validateStep4 = validateStep42;
     signupStep2.style.display = "none";
     signupStep3.style.display = "none";
     signupStep4.style.display = "none";
     signupStep5.style.display = "none";
     let currentStep = 1;
+    const carrierBtns = document.querySelectorAll(".carrier-btn");
+    carrierBtns.forEach((btn) => {
+      btn.addEventListener("click", function() {
+        carrierBtns.forEach((b) => b.classList.remove("active"));
+        this.classList.add("active");
+      });
+    });
+    const confirmId = document.getElementById("confirm-id");
+    if (confirmId) {
+      confirmId.addEventListener("blur", function() {
+        if (this.value.trim() && !validateEmail2(this.value.trim())) {
+          showError2(this, "올바른 이메일 형식이 아닙니다.");
+        } else {
+          hideError2(this);
+        }
+      });
+    }
+    const confirmPhone = document.getElementById("confirm-phone");
+    if (confirmPhone) {
+      confirmPhone.addEventListener("blur", function() {
+        if (this.value.trim() && !validatePhone2(this.value)) {
+          showError2(this, "올바른 전화번호 형식이 아닙니다.");
+        } else {
+          hideError2(this);
+        }
+      });
+    }
+    const signupId = document.getElementById("signup-id");
+    if (signupId) {
+      signupId.addEventListener("blur", function() {
+        if (this.value.trim() && !validateEmail2(this.value.trim())) {
+          showError2(this, "올바른 이메일 형식이 아닙니다.");
+        } else {
+          hideError2(this);
+        }
+      });
+    }
+    const signupPassword = document.getElementById("signup-password");
+    if (signupPassword) {
+      signupPassword.addEventListener("input", function() {
+        const errorMsg = this.parentElement.querySelector(".error-message");
+        if (this.value.length > 0 && this.value.length < 6) {
+          if (errorMsg && !errorMsg.textContent.includes("회원가입을 위해서는")) {
+            showError2(this, "비밀번호를 6자리 이상 입력해 주세요.");
+          }
+        } else {
+          hideError2(this);
+        }
+      });
+    }
+    const confirmPassword = document.getElementById("confirm-password");
+    if (confirmPassword) {
+      confirmPassword.addEventListener("blur", function() {
+        const password = (signupPassword == null ? void 0 : signupPassword.value) || "";
+        if (this.value && password !== this.value) {
+          showError2(this, "비밀번호가 일치하지 않습니다.");
+        } else {
+          hideError2(this);
+        }
+      });
+    }
     signupForm.addEventListener("submit", function(e) {
       e.preventDefault();
       if (currentStep === 1) {
-        signupStep1.style.display = "none";
-        signupStep2.style.display = "flex";
-        currentStep = 2;
-        if (breadcrumbSpan) breadcrumbSpan.textContent = stepTexts[2];
+        if (validateStep12()) {
+          signupStep1.style.display = "none";
+          signupStep2.style.display = "flex";
+          currentStep = 2;
+          if (breadcrumbSpan) breadcrumbSpan.textContent = stepTexts[2];
+        }
       } else if (currentStep === 2) {
-        signupStep2.style.display = "none";
-        signupStep3.style.display = "flex";
-        currentStep = 3;
-        if (breadcrumbSpan) breadcrumbSpan.textContent = stepTexts[3];
+        if (validateStep22()) {
+          signupStep2.style.display = "none";
+          signupStep3.style.display = "flex";
+          currentStep = 3;
+          if (breadcrumbSpan) breadcrumbSpan.textContent = stepTexts[3];
+        }
       } else if (currentStep === 3) {
-        signupStep3.style.display = "none";
-        signupStep4.style.display = "flex";
-        currentStep = 4;
-        if (breadcrumbSpan) breadcrumbSpan.textContent = stepTexts[4];
+        if (validateStep32()) {
+          signupStep3.style.display = "none";
+          signupStep4.style.display = "flex";
+          currentStep = 4;
+          if (breadcrumbSpan) breadcrumbSpan.textContent = stepTexts[4];
+        }
       } else if (currentStep === 4) {
-        signupStep4.style.display = "none";
-        signupStep5.style.display = "flex";
-        currentStep = 5;
-        if (breadcrumbSpan) breadcrumbSpan.textContent = stepTexts[5];
+        if (validateStep42()) {
+          signupStep4.style.display = "none";
+          signupStep5.style.display = "flex";
+          currentStep = 5;
+          if (breadcrumbSpan) breadcrumbSpan.textContent = stepTexts[5];
+        }
       } else ;
     });
   }

@@ -1,5 +1,5 @@
 <!-- @pageTitle 마이페이지 -->
-<!-- @pageNote 나의정보 비번입력 -->
+<!-- @pageNote 나의정보 비번입력 & 테스트 스크립트 삽입 -->
 <!-- @pageCreated 2025-11-28 -->
 <!-- @pageUpdated 2025-11-28 -->
 <!DOCTYPE html>
@@ -35,11 +35,10 @@
 							<div class="input-row">
 								<label for="find-id" class="label">비밀번호</label>
 								<input type="password" id="mypage-confirm-password" name="mypage-confirm-password" placeholder="비밀번호를 입력하세요.">
-                <p class="error-message">잘못된 비밀번호 입니다.</p>
+								<p class="error-message" id="password-error" style="display: none;">잘못된 비밀번호 입니다.</p>
 							</div>
 							<div class="input-row">
 								<button type="submit" class="btn-login" disabled>다음</button>
-								<button type="submit" class="btn-login">다음</button>
 							</div>
 						</div>
 					</form>
@@ -52,6 +51,45 @@
 	{{> layout/footer}}
 
 	<script type="module" src="/js/main.js"></script>
+	<script>
+		// 테스트용 비밀번호 검증
+		document.addEventListener('DOMContentLoaded', function() {
+			const form = document.getElementById('mypage-confirm-form');
+			const passwordInput = document.getElementById('mypage-confirm-password');
+			const errorMessage = document.getElementById('password-error');
+			const submitButton = form.querySelector('.btn-login');
+
+			// 비밀번호 입력 시 버튼 활성화
+			passwordInput.addEventListener('input', function() {
+				if (this.value.length > 0) {
+					submitButton.disabled = false;
+				} else {
+					submitButton.disabled = true;
+				}
+				// 입력 중에는 에러 메시지 숨김
+				if (errorMessage.style.display === 'block') {
+					errorMessage.style.display = 'none';
+				}
+			});
+
+			// 폼 제출 시 비밀번호 검증 (테스트용: 올바른 비밀번호는 "1234")
+			form.addEventListener('submit', function(e) {
+				e.preventDefault();
+				
+				const password = passwordInput.value;
+				
+				// 테스트용: 비밀번호가 "1234"가 아니면 에러 표시
+				if (password !== '1234') {
+					errorMessage.style.display = 'block';
+					passwordInput.focus();
+				} else {
+					errorMessage.style.display = 'none';
+					// 여기에 실제 성공 로직 추가
+					alert('비밀번호 확인 성공!');
+				}
+			});
+		});
+	</script>
 </body>
 
 </html>

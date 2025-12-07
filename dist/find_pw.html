@@ -50,16 +50,38 @@
 	
 	    <nav id="nav">
 	      <ul id="gnb" class="gnb">
-	        <li><a href="#">대출비교 서비스 </a></li>
-	        <li><a href="#">고객센터</a></li>
-	        <li><a href="#">마이페이지</a></li>
+	        <li><a href="#">대출비교 서비스 </a>
+	          <ul class="sub-menu">
+	            <li><a href="#">증권사 담보대출 비교-대고객</a></li>
+	            <li><a href="#">증권사 담보대출 비교</a></li>
+	            <li><a href="#">증권사 신용대출 비교</a></li>
+	            <li><a href="#">스탁론 비교</a></li>
+	          </ul>
+	        </li>
+	        <li><a href="#">고객센터</a>
+	          <ul class="sub-menu">
+	            <li><a href="#">공지사항</a></li>
+	            <li><a href="#">1:1문의</a></li>
+	            <li><a href="#">이벤트안내</a></li>
+	          </ul>
+	        </li>
+	        <li><a href="#">마이페이지</a>
+	          <ul class="sub-menu">
+	            <li><a href="#">최근비교종목</a></li>
+	            <li><a href="#">나의 정보</a></li>
+	          </ul>
+	        </li>
 	      </ul>
 	    </nav>
 	    <!-- // nav -->
 	
-	    <div class="header-buttons">
-	      <a href="#" class="#">회원가입</a>
-	      <a href="#" class="#">로그인</a>
+	    <div class="header-buttons logout">
+	      <!-- <a href="#" class="#">회원가입</a>
+	      <a href="#" class="#">로그인</a> -->
+	      <a href="#" class="logout-a">
+	        <span class="text">djaflkasjlk</span>
+	        <span class="icon">x</span>
+	      </a>
 	    </div>
 	
 	    <div class="header-hamburger">
@@ -71,6 +93,8 @@
 	    </div>
 	    <!-- // header-hamburger -->
 	  </div>
+	
+	  <div class="header-bg"></div>
 	</header>
 	<!-- // header -->
 	
@@ -325,6 +349,160 @@
 			</div>
 		</div>
 	</div>
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			const findPwForm = document.getElementById('find_pw-form');
+			const verificationId = document.getElementById('verification-id');
+			const verificationConfirm = document.getElementById('verification-confirm');
+			const findId = document.getElementById('find-id');
+			const confirmId = document.getElementById('confirm-id');
+			const confirmPhone = document.getElementById('confirm-phone');
+			const carrierBtns = document.querySelectorAll('.carrier-btn');
+			const breadcrumbSpan = document.querySelector('.breadcrumb-item span');
+
+			// 초기 설정
+			if (verificationConfirm) verificationConfirm.style.display = 'none';
+			let currentStep = 1;
+
+			// 에러 메시지 표시 함수
+			function showError(input, message) {
+				let errorDiv = input.parentElement.querySelector('.error-message');
+				if (!errorDiv) {
+					errorDiv = document.createElement('div');
+					errorDiv.className = 'error-message';
+					input.parentElement.appendChild(errorDiv);
+				}
+				errorDiv.textContent = message;
+				errorDiv.style.display = 'block';
+				errorDiv.style.color = '#df0000';
+				input.style.borderColor = '#df0000';
+			}
+
+			// 에러 메시지 숨기기
+			function hideError(input) {
+				const errorDiv = input.parentElement.querySelector('.error-message');
+				if (errorDiv) {
+					errorDiv.style.display = 'none';
+				}
+				input.style.borderColor = '';
+			}
+
+			// 이메일 유효성 검사
+			function validateEmail(email) {
+				const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+				return emailRegex.test(email);
+			}
+
+			// 전화번호 유효성 검사
+			function validatePhone(phone) {
+				const phoneRegex = /^[0-9]{10,11}$/;
+				return phoneRegex.test(phone.replace(/[^0-9]/g, ''));
+			}
+
+			// 통신사 버튼 클릭 이벤트
+			carrierBtns.forEach(btn => {
+				btn.addEventListener('click', function() {
+					carrierBtns.forEach(b => b.classList.remove('active'));
+					this.classList.add('active');
+				});
+			});
+
+			// 실시간 검증
+			if (findId) {
+				findId.addEventListener('blur', function() {
+					if (this.value.trim() && !validateEmail(this.value.trim())) {
+						showError(this, '올바른 이메일 형식이 아닙니다.');
+					} else {
+						hideError(this);
+					}
+				});
+			}
+
+			if (confirmId) {
+				confirmId.addEventListener('blur', function() {
+					if (this.value.trim() && !validateEmail(this.value.trim())) {
+						showError(this, '올바른 이메일 형식이 아닙니다.');
+					} else {
+						hideError(this);
+					}
+				});
+			}
+
+			if (confirmPhone) {
+				confirmPhone.addEventListener('blur', function() {
+					if (this.value.trim() && !validatePhone(this.value)) {
+						showError(this, '올바른 전화번호 형식이 아닙니다. (10-11자리 숫자)');
+					} else {
+						hideError(this);
+					}
+				});
+			}
+
+			// 폼 제출 검증
+			if (findPwForm) {
+				findPwForm.addEventListener('submit', function(e) {
+					e.preventDefault();
+
+					if (currentStep === 1) {
+						// Step1: ID 검증
+						if (!findId || !findId.value.trim()) {
+							if (findId) showError(findId, '아이디(이메일)를 입력해주세요.');
+							return;
+						}
+						if (!validateEmail(findId.value.trim())) {
+							showError(findId, '올바른 이메일 형식이 아닙니다.');
+							return;
+						}
+						hideError(findId);
+
+						// Step2로 이동
+						if (verificationId) verificationId.style.display = 'none';
+						if (verificationConfirm) verificationConfirm.style.display = 'block';
+						if (confirmId) confirmId.value = findId.value;
+						currentStep = 2;
+						if (breadcrumbSpan) breadcrumbSpan.textContent = '비밀번호찾기 Step2 (본인인증)';
+					} else if (currentStep === 2) {
+						// Step2: 본인인증
+						let isValid = true;
+
+						// 아이디 검증
+						if (!confirmId || !confirmId.value.trim()) {
+							if (confirmId) showError(confirmId, '아이디(이메일)를 입력해주세요.');
+							isValid = false;
+						} else if (!validateEmail(confirmId.value.trim())) {
+							showError(confirmId, '올바른 이메일 형식이 아닙니다.');
+							isValid = false;
+						} else {
+							hideError(confirmId);
+						}
+
+						// 전화번호 검증
+						if (!confirmPhone || !confirmPhone.value.trim()) {
+							if (confirmPhone) showError(confirmPhone, '전화번호를 입력해주세요.');
+							isValid = false;
+						} else if (!validatePhone(confirmPhone.value)) {
+							showError(confirmPhone, '올바른 전화번호 형식이 아닙니다. (10-11자리 숫자)');
+							isValid = false;
+						} else {
+							hideError(confirmPhone);
+						}
+
+						// 통신사 선택 검증
+						const activeCarrier = document.querySelector('.carrier-btn.active');
+						if (!activeCarrier) {
+							alert('통신사를 선택해주세요.');
+							isValid = false;
+						}
+
+						if (isValid) {
+							alert('본인인증이 완료되었습니다.');
+							// 실제 인증 로직으로 대체
+						}
+					}
+				});
+			}
+		});
+	</script>
 </body>
 
 </html>

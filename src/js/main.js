@@ -88,10 +88,35 @@ document.addEventListener('DOMContentLoaded', function() {
         }, false);
     }
 
+    // GNB 전체 메뉴 토글
+    const headerBg = document.querySelector('.header-bg');
+    const nav = document.querySelector('#nav');
+    const headerElement = document.querySelector('.header');
+    
+    if (nav && headerBg && headerElement) {
+        // 메뉴 영역 hover 시 전체 메뉴 표시
+        nav.addEventListener('mouseenter', function() {
+            headerElement.classList.add('menu-open');
+            headerBg.classList.add('active');
+        });
+        
+        nav.addEventListener('mouseleave', function() {
+            headerElement.classList.remove('menu-open');
+            headerBg.classList.remove('active');
+        });
+        
+        // header-bg 클릭 시 메뉴 닫기
+        headerBg.addEventListener('click', function() {
+            headerElement.classList.remove('menu-open');
+            headerBg.classList.remove('active');
+        });
+    }
+
     const modalTriggers = document.querySelectorAll('[data-modal]');
 
     modalTriggers.forEach(trigger => {
-        trigger.addEventListener('click', function() {
+        trigger.addEventListener('click', function(e) {
+            e.preventDefault();
             const modalId = this.getAttribute('data-modal');
             const modal = document.getElementById(modalId);
 
@@ -204,30 +229,257 @@ document.addEventListener('DOMContentLoaded', function() {
 
         let currentStep = 1;
 
+        // 에러 메시지 표시 함수
+        function showError(input, message) {
+            let errorDiv = input.parentElement.querySelector('.error-message');
+            if (!errorDiv || errorDiv.textContent.includes('회원가입을 위해서는')) {
+                errorDiv = document.createElement('div');
+                errorDiv.className = 'error-message';
+                input.parentElement.appendChild(errorDiv);
+            }
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+            errorDiv.style.color = '#df0000';
+            input.style.borderColor = '#df0000';
+        }
+
+        // 에러 메시지 숨기기
+        function hideError(input) {
+            const errorDiv = input.parentElement.querySelector('.error-message');
+            if (errorDiv && !errorDiv.textContent.includes('회원가입을 위해서는')) {
+                errorDiv.style.display = 'none';
+            }
+            input.style.borderColor = '';
+        }
+
+        // 이메일 유효성 검사
+        function validateEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // 전화번호 유효성 검사
+        function validatePhone(phone) {
+            const phoneRegex = /^[0-9]{10,11}$/;
+            return phoneRegex.test(phone.replace(/[^0-9]/g, ''));
+        }
+
+        // Step1 검증: 필수 약관 동의
+        function validateStep1() {
+            const termsService = document.getElementById('terms-service');
+            const termsPrivacy = document.getElementById('terms-privacy');
+            
+            if (!termsService || !termsService.checked) {
+                alert('서비스 이용약관에 동의해주세요.');
+                return false;
+            }
+            
+            if (!termsPrivacy || !termsPrivacy.checked) {
+                alert('개인정보수집 및 이용동의에 동의해주세요.');
+                return false;
+            }
+            
+            return true;
+        }
+
+        // Step2 검증: 아이디, 전화번호, 통신사
+        function validateStep2() {
+            const confirmId = document.getElementById('confirm-id');
+            const confirmPhone = document.getElementById('confirm-phone');
+            const carrierBtn = document.querySelector('.carrier-btn.active');
+            
+            // 아이디 검증
+            if (!confirmId || !confirmId.value.trim()) {
+                if (confirmId) showError(confirmId, '아이디(이메일)를 입력해주세요.');
+                return false;
+            }
+            if (!validateEmail(confirmId.value.trim())) {
+                showError(confirmId, '올바른 이메일 형식이 아닙니다.');
+                return false;
+            }
+            hideError(confirmId);
+            
+            // 전화번호 검증
+            if (!confirmPhone || !confirmPhone.value.trim()) {
+                if (confirmPhone) showError(confirmPhone, '전화번호를 입력해주세요.');
+                return false;
+            }
+            if (!validatePhone(confirmPhone.value)) {
+                showError(confirmPhone, '올바른 전화번호 형식이 아닙니다.');
+                return false;
+            }
+            hideError(confirmPhone);
+            
+            // 통신사 선택 검증
+            if (!carrierBtn) {
+                alert('통신사를 선택해주세요.');
+                return false;
+            }
+            
+            return true;
+        }
+
+        // Step3 검증: 인증번호
+        function validateStep3() {
+            const verificationCode = document.getElementById('verification-code');
+            
+            if (!verificationCode || !verificationCode.value.trim()) {
+                if (verificationCode) showError(verificationCode, '인증번호를 입력해주세요.');
+                return false;
+            }
+            if (verificationCode.value.trim().length < 4) {
+                showError(verificationCode, '인증번호는 4자리 이상 입력해주세요.');
+                return false;
+            }
+            hideError(verificationCode);
+            
+            return true;
+        }
+
+        // Step4 검증: 아이디, 비밀번호, 비밀번호 확인
+        function validateStep4() {
+            const signupId = document.getElementById('signup-id');
+            const signupPassword = document.getElementById('signup-password');
+            const confirmPassword = document.getElementById('confirm-password');
+            
+            // 아이디 검증
+            if (!signupId || !signupId.value.trim()) {
+                if (signupId) showError(signupId, '아이디(이메일)를 입력해주세요.');
+                return false;
+            }
+            if (!validateEmail(signupId.value.trim())) {
+                showError(signupId, '올바른 이메일 형식이 아닙니다.');
+                return false;
+            }
+            hideError(signupId);
+            
+            // 비밀번호 검증
+            if (!signupPassword || !signupPassword.value.trim()) {
+                if (signupPassword) showError(signupPassword, '비밀번호를 입력해주세요.');
+                return false;
+            }
+            if (signupPassword.value.length < 6) {
+                showError(signupPassword, '비밀번호를 6자리 이상 입력해 주세요.');
+                return false;
+            }
+            hideError(signupPassword);
+            
+            // 비밀번호 확인 검증
+            if (!confirmPassword || !confirmPassword.value.trim()) {
+                if (confirmPassword) showError(confirmPassword, '비밀번호 확인을 입력해주세요.');
+                return false;
+            }
+            if (signupPassword.value !== confirmPassword.value) {
+                showError(confirmPassword, '비밀번호가 일치하지 않습니다.');
+                return false;
+            }
+            hideError(confirmPassword);
+            
+            return true;
+        }
+
+        // 통신사 버튼 클릭 이벤트
+        const carrierBtns = document.querySelectorAll('.carrier-btn');
+        carrierBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                carrierBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // 입력 필드 실시간 검증
+        const confirmId = document.getElementById('confirm-id');
+        if (confirmId) {
+            confirmId.addEventListener('blur', function() {
+                if (this.value.trim() && !validateEmail(this.value.trim())) {
+                    showError(this, '올바른 이메일 형식이 아닙니다.');
+                } else {
+                    hideError(this);
+                }
+            });
+        }
+
+        const confirmPhone = document.getElementById('confirm-phone');
+        if (confirmPhone) {
+            confirmPhone.addEventListener('blur', function() {
+                if (this.value.trim() && !validatePhone(this.value)) {
+                    showError(this, '올바른 전화번호 형식이 아닙니다.');
+                } else {
+                    hideError(this);
+                }
+            });
+        }
+
+        const signupId = document.getElementById('signup-id');
+        if (signupId) {
+            signupId.addEventListener('blur', function() {
+                if (this.value.trim() && !validateEmail(this.value.trim())) {
+                    showError(this, '올바른 이메일 형식이 아닙니다.');
+                } else {
+                    hideError(this);
+                }
+            });
+        }
+
+        const signupPassword = document.getElementById('signup-password');
+        if (signupPassword) {
+            signupPassword.addEventListener('input', function() {
+                const errorMsg = this.parentElement.querySelector('.error-message');
+                if (this.value.length > 0 && this.value.length < 6) {
+                    if (errorMsg && !errorMsg.textContent.includes('회원가입을 위해서는')) {
+                        showError(this, '비밀번호를 6자리 이상 입력해 주세요.');
+                    }
+                } else {
+                    hideError(this);
+                }
+            });
+        }
+
+        const confirmPassword = document.getElementById('confirm-password');
+        if (confirmPassword) {
+            confirmPassword.addEventListener('blur', function() {
+                const password = signupPassword?.value || '';
+                if (this.value && password !== this.value) {
+                    showError(this, '비밀번호가 일치하지 않습니다.');
+                } else {
+                    hideError(this);
+                }
+            });
+        }
+
         signupForm.addEventListener('submit', function(e) {
             e.preventDefault();
 
             if (currentStep === 1) {
-                signupStep1.style.display = 'none';
-                signupStep2.style.display = 'flex';
-                currentStep = 2;
-                if (breadcrumbSpan) breadcrumbSpan.textContent = stepTexts[2];
+                if (validateStep1()) {
+                    signupStep1.style.display = 'none';
+                    signupStep2.style.display = 'flex';
+                    currentStep = 2;
+                    if (breadcrumbSpan) breadcrumbSpan.textContent = stepTexts[2];
+                }
             } else if (currentStep === 2) {
-                signupStep2.style.display = 'none';
-                signupStep3.style.display = 'flex';
-                currentStep = 3;
-                if (breadcrumbSpan) breadcrumbSpan.textContent = stepTexts[3];
+                if (validateStep2()) {
+                    signupStep2.style.display = 'none';
+                    signupStep3.style.display = 'flex';
+                    currentStep = 3;
+                    if (breadcrumbSpan) breadcrumbSpan.textContent = stepTexts[3];
+                }
             } else if (currentStep === 3) {
-                signupStep3.style.display = 'none';
-                signupStep4.style.display = 'flex';
-                currentStep = 4;
-                if (breadcrumbSpan) breadcrumbSpan.textContent = stepTexts[4];
+                if (validateStep3()) {
+                    signupStep3.style.display = 'none';
+                    signupStep4.style.display = 'flex';
+                    currentStep = 4;
+                    if (breadcrumbSpan) breadcrumbSpan.textContent = stepTexts[4];
+                }
             } else if (currentStep === 4) {
-                signupStep4.style.display = 'none';
-                signupStep5.style.display = 'flex';
-                currentStep = 5;
-                if (breadcrumbSpan) breadcrumbSpan.textContent = stepTexts[5];
+                if (validateStep4()) {
+                    signupStep4.style.display = 'none';
+                    signupStep5.style.display = 'flex';
+                    currentStep = 5;
+                    if (breadcrumbSpan) breadcrumbSpan.textContent = stepTexts[5];
+                }
             } else if (currentStep === 5) {
+                // 완료 페이지
             }
         });
     }

@@ -1,0 +1,86 @@
+<!-- @pageTitle 대출지원 쿠폰 발급 -->
+<!-- @pageNote 대출지원 쿠폰 발급 페이지 -->
+<!-- @pageCreated 2025-11-28 -->
+<!-- @pageUpdated 2025-11-28 -->
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	{{> layout/meta}}
+</head>
+
+<body>
+	{{> layout/header}}
+	<main id="main" class="main">
+		{{> layout/subVisual}}
+
+		<div class="breadcrumb">
+			<div class="container">
+				<ol class="breadcrumb-list">
+					<li class="breadcrumb-item">
+						<a href="/">홈</a>
+					</li>
+					<li class="breadcrumb-item">
+						<span>대출지원 쿠폰</span>
+					</li>
+				</ol>
+			</div>
+		</div>
+
+		<div id="sub-layout">
+			<div class="container">
+				<div class="loan-coupon-page">
+					<h2 class="page-title">대출지원 쿠폰이 발급되었습니다.</h2>
+
+					<!-- 쿠폰 -->
+					<div class="coupon-container">
+						<div class="coupon">
+							<div class="coupon-pattern"></div>
+							<div class="coupon-content">
+								<h3 class="coupon-title">대출지원 쿠폰</h3>
+								<p class="coupon-period">유효기간: 2025 11 27 ~ 2025 12 07</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- 쿠폰 정보 섹션 -->
+					<div class="coupon-info-section">
+						<div class="info-item">
+							<h4 class="info-title">이자지원쿠폰 사용방법</h4>
+							<div class="info-content">
+								<p>내용</p>
+							</div>
+						</div>
+						<div class="info-item">
+							<h4 class="info-title">유효기간</h4>
+							<div class="info-content">
+								<p>내용</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- 액션 버튼 -->
+					<div class="action-section">
+						<div class="final-disclaimer">
+							<p class="disclaimer-text"><span class="note-asterisk">*</span>위의 조건은 증권사 심사 결과에 따라 차이가 있을 수 있습니다.</p>
+						</div>
+	
+						<p class="action-question">대출을 신청 하시겠습니까?</p>
+						<div class="action-buttons">
+							<button class="btn-securities-list" type="button">증권사 리스트</button>
+							<button class="btn-loan-apply" type="button">대출신청</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</main>
+
+	{{> layout/footer}}
+
+	<script type="module" src="/js/main.js"></script>
+</body>
+
+</html>
+
