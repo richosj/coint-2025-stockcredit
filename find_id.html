@@ -50,16 +50,38 @@
 	
 	    <nav id="nav">
 	      <ul id="gnb" class="gnb">
-	        <li><a href="#">대출비교 서비스 </a></li>
-	        <li><a href="#">고객센터</a></li>
-	        <li><a href="#">마이페이지</a></li>
+	        <li><a href="#">대출비교 서비스 </a>
+	          <ul class="sub-menu">
+	            <li><a href="#">증권사 담보대출 비교-대고객</a></li>
+	            <li><a href="#">증권사 담보대출 비교</a></li>
+	            <li><a href="#">증권사 신용대출 비교</a></li>
+	            <li><a href="#">스탁론 비교</a></li>
+	          </ul>
+	        </li>
+	        <li><a href="#">고객센터</a>
+	          <ul class="sub-menu">
+	            <li><a href="#">공지사항</a></li>
+	            <li><a href="#">1:1문의</a></li>
+	            <li><a href="#">이벤트안내</a></li>
+	          </ul>
+	        </li>
+	        <li><a href="#">마이페이지</a>
+	          <ul class="sub-menu">
+	            <li><a href="#">최근비교종목</a></li>
+	            <li><a href="#">나의 정보</a></li>
+	          </ul>
+	        </li>
 	      </ul>
 	    </nav>
 	    <!-- // nav -->
 	
-	    <div class="header-buttons">
-	      <a href="#" class="#">회원가입</a>
-	      <a href="#" class="#">로그인</a>
+	    <div class="header-buttons logout">
+	      <!-- <a href="#" class="#">회원가입</a>
+	      <a href="#" class="#">로그인</a> -->
+	      <a href="#" class="logout-a">
+	        <span class="text">djaflkasjlk</span>
+	        <span class="icon">x</span>
+	      </a>
 	    </div>
 	
 	    <div class="header-hamburger">
@@ -71,6 +93,8 @@
 	    </div>
 	    <!-- // header-hamburger -->
 	  </div>
+	
+	  <div class="header-bg"></div>
 	</header>
 	<!-- // header -->
 	
@@ -332,6 +356,156 @@
 			</div>
 		</div>
 	</div>
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			const findIdForm = document.getElementById('find_id-form');
+			const confirmName = document.getElementById('confirm-name');
+			const confirmBirth = document.getElementById('confirm-birth');
+			const confirmGender = document.getElementById('confirm-gender');
+			const confirmPhone = document.getElementById('confirm-phone');
+			const carrierBtns = document.querySelectorAll('.carrier-btn');
+			const breadcrumbSpan = document.querySelector('.breadcrumb-item span');
+
+			// 에러 메시지 표시 함수
+			function showError(input, message) {
+				let errorDiv = input.parentElement.querySelector('.error-message');
+				if (!errorDiv) {
+					errorDiv = document.createElement('div');
+					errorDiv.className = 'error-message';
+					input.parentElement.appendChild(errorDiv);
+				}
+				errorDiv.textContent = message;
+				errorDiv.style.display = 'block';
+				errorDiv.style.color = '#df0000';
+				input.style.borderColor = '#df0000';
+			}
+
+			// 에러 메시지 숨기기
+			function hideError(input) {
+				const errorDiv = input.parentElement.querySelector('.error-message');
+				if (errorDiv) {
+					errorDiv.style.display = 'none';
+				}
+				input.style.borderColor = '';
+			}
+
+			// 전화번호 유효성 검사
+			function validatePhone(phone) {
+				const phoneRegex = /^[0-9]{10,11}$/;
+				return phoneRegex.test(phone.replace(/[^0-9]/g, ''));
+			}
+
+			// 생년월일 유효성 검사 (6자리 숫자)
+			function validateBirth(birth) {
+				const birthRegex = /^[0-9]{6}$/;
+				return birthRegex.test(birth.replace(/[^0-9]/g, ''));
+			}
+
+			// 통신사 버튼 클릭 이벤트
+			carrierBtns.forEach(btn => {
+				btn.addEventListener('click', function() {
+					carrierBtns.forEach(b => b.classList.remove('active'));
+					this.classList.add('active');
+				});
+			});
+
+			// 실시간 검증
+			if (confirmName) {
+				confirmName.addEventListener('blur', function() {
+					if (this.value.trim() && this.value.trim().length < 2) {
+						showError(this, '이름을 2자 이상 입력해주세요.');
+					} else if (this.value.trim()) {
+						hideError(this);
+					}
+				});
+			}
+
+			if (confirmBirth) {
+				confirmBirth.addEventListener('blur', function() {
+					if (this.value.trim() && !validateBirth(this.value)) {
+						showError(this, '생년월일을 6자리 숫자로 입력해주세요.');
+					} else if (this.value.trim()) {
+						hideError(this);
+					}
+				});
+			}
+
+			if (confirmPhone) {
+				confirmPhone.addEventListener('blur', function() {
+					if (this.value.trim() && !validatePhone(this.value)) {
+						showError(this, '올바른 전화번호 형식이 아닙니다. (10-11자리 숫자)');
+					} else if (this.value.trim()) {
+						hideError(this);
+					}
+				});
+			}
+
+			// 폼 제출 검증
+			if (findIdForm) {
+				findIdForm.addEventListener('submit', function(e) {
+					e.preventDefault();
+
+					let isValid = true;
+
+					// 이름 검증
+					if (!confirmName || !confirmName.value.trim()) {
+						if (confirmName) showError(confirmName, '이름을 입력해주세요.');
+						isValid = false;
+					} else if (confirmName.value.trim().length < 2) {
+						showError(confirmName, '이름을 2자 이상 입력해주세요.');
+						isValid = false;
+					} else {
+						hideError(confirmName);
+					}
+
+					// 생년월일 검증
+					if (!confirmBirth || !confirmBirth.value.trim()) {
+						if (confirmBirth) showError(confirmBirth, '생년월일을 입력해주세요.');
+						isValid = false;
+					} else if (!validateBirth(confirmBirth.value)) {
+						showError(confirmBirth, '생년월일을 6자리 숫자로 입력해주세요.');
+						isValid = false;
+					} else {
+						hideError(confirmBirth);
+					}
+
+					// 성별 검증
+					if (!confirmGender || !confirmGender.value) {
+						if (confirmGender) {
+							showError(confirmGender, '성별을 선택해주세요.');
+						}
+						isValid = false;
+					} else {
+						hideError(confirmGender);
+					}
+
+					// 통신사 선택 검증
+					const activeCarrier = document.querySelector('.carrier-btn.active');
+					if (!activeCarrier) {
+						alert('통신사를 선택해주세요.');
+						isValid = false;
+					}
+
+					// 전화번호 검증
+					if (!confirmPhone || !confirmPhone.value.trim()) {
+						if (confirmPhone) showError(confirmPhone, '전화번호를 입력해주세요.');
+						isValid = false;
+					} else if (!validatePhone(confirmPhone.value)) {
+						showError(confirmPhone, '올바른 전화번호 형식이 아닙니다. (10-11자리 숫자)');
+						isValid = false;
+					} else {
+						hideError(confirmPhone);
+					}
+
+					if (isValid) {
+						if (breadcrumbSpan) breadcrumbSpan.textContent = '아이디찾기 Step2 (문자인증)';
+						alert('본인인증이 완료되었습니다.');
+						// 실제 인증 로직으로 대체
+					}
+				});
+			}
+		});
+	</script>
 </body>
 
 </html>
