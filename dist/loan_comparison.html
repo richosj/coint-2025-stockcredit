@@ -1,9 +1,10 @@
 <!-- @pageTitle 대출비교 -->
 <!-- @pageNote 대출비교 절차 & 상품비교 -->
 <!-- @pageCreated 2025-11-28 -->
-<!-- @pageUpdated 2025-11-28 -->
+<!-- @pageUpdated 2025-12-07 -->
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
 	<!-- 기본 -->
 	<meta charset="UTF-8">
@@ -38,6 +39,7 @@
   <script src="./assets/js/main.js"></script>
   <link rel="stylesheet" href="./assets/css/main.css">
 </head>
+
 <body>
 	<header id="header" class="header">
 	  <div class="header-inner">
@@ -77,8 +79,8 @@
 	      <!-- <a href="#" class="#">회원가입</a>
 	      <a href="#" class="#">로그인</a> -->
 	      <a href="#" class="logout-a">
-	        <span class="text">djaflkasjlk</span>
-	        <span class="icon">x</span>
+	        <span class="text">djaflkasjlkdjaflkasjlk</span>
+	        <span class="icon"></span>
 	      </a>
 	    </div>
 	
@@ -104,6 +106,13 @@
 	          <path d="M15 18L9 12L15 6" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
 	        </svg>
 	      </button>
+	
+	      <div class="mobile-logout">
+	        <span class="text">djaflkasjlkdjaflkasjlk</span>
+	        <button class="btn-logout">
+	          <span class="icon"></span>
+	        </button>
+	      </div>
 	    </div>
 	
 	    <div class="mobile-gnb">
@@ -150,6 +159,7 @@
 	</nav>
 	<!-- // mobile-nav -->	<main id="main" class="main">
 		<div class="subVisual">
+					
 		</div>
 		<div class="breadcrumb">
 			<div class="container">
@@ -166,6 +176,7 @@
 				</ol>
 			</div>
 		</div>
+
 		<div id="sub-layout">
 			<div class="container">
 				<div class="loan-comparison-page">
@@ -180,6 +191,7 @@
 							<p class="procedure-note">실제 대출 가능 금액은 증권사 심사 결과에 따라 변동될 수 있습니다.</p>
 						</div>
 					</div>
+
 					<!-- 보유종목 섹션 -->
 					<div class="stocks-section">
 						<div class="section-header">
@@ -228,6 +240,7 @@
 						</div>
 						<button class="btn-compare" id="btn-compare" type="button">상품 비교하기</button>
 					</div>
+
 					<!-- 상품 비교 결과 섹션 -->
 					<div class="results-section" id="results-section">
 						<div class="filter-group">
@@ -279,10 +292,33 @@
 							</tbody>
 						</table>
 					</div>
+
+					<div class="legal-notice">
+						<p>㈜핀테크인은 금융관계법령에 따라 등록되어 있는 대출모집법인(대출모집인 번호 제2025-OOO호)이며, 
+						금융감독원 포털사이트, 대출성 금융상품판매대리∙중개업자 통합조회와 “스탁크레딧” 홈페이지 내 대출성 
+						상품 금융상품판매대리∙중개업 등록증표로 신원확인이 가능합니다.
+						㈜핀테크인은 금융관계법령에 따라 등록되어 있는 대출모집법인(대출모집인 번호 제2025-OOO호)이며, 
+						금융감독원 포털사이트, 대출성 금융상품판매대리∙중개업자 통합조회와 “스탁크레딧” 홈페이지 내 대출성 
+						상품 금융상품판매대리∙중개업 등록증표로 신원확인이 가능합니다.
+						㈜핀테크인은 금융관계법령에 따라 등록되어 있는 대출모집법인(대출모집인 번호 제2025-OOO호)이며, 
+						금융감독원 포털사이트, 대출성 금융상품판매대리∙중개업자 통합조회와 “스탁크레딧” 홈페이지 내 대출성 
+						상품 금융상품판매대리∙중개업 등록증표로 신원확인이 가능합니다.
+						㈜핀테크인은 금융관계법령에 따라 등록되어 있는 대출모집법인(대출모집인 번호 제2025-OOO호)이며, 
+						금융감독원 포털사이트, 대출성 금융상품판매대리∙중개업자 통합조회와 “스탁크레딧” 홈페이지 내 대출성 
+						상품 금융상품판매대리∙중개업 등록증표로 신원확인이 가능합니다.
+						㈜핀테크인은 금융관계법령에 따라 등록되어 있는 대출모집법인(대출모집인 번호 제2025-OOO호)이며, 
+						금융감독원 포털사이트, 대출성 금융상품판매대리∙중개업자 통합조회와 “스탁크레딧” 홈페이지 내 대출성 
+						상품 금융상품판매대리∙중개업 등록증표로 신원확인이 가능합니다.
+						</p>
+						<button class="btn-more" type="button">더보기</button>
+					</div>
+					
 				</div>
 			</div>
 		</div>
+
 	</main>
+
 	<footer id="footer" class="footer">
 		<div class="container">
 			<div class="footer-inner">
@@ -450,20 +486,26 @@
 			</div>
 		</div>
 	</div>
+
 	<script>
 		// quantity-value만 업데이트 (수량 * 단가)
 		function updateQuantityValue(stockItem) {
 			const stockPrice = stockItem.querySelector('.stock-price');
 			const quantityInput = stockItem.querySelector('.quantity-input');
 			const quantityValue = stockItem.querySelector('.quantity-value');
+			
 			if (!stockPrice || !quantityInput || !quantityValue) return;
+			
 			const price = parseInt(stockPrice.textContent.replace(/[^0-9]/g, '')) || 0;
 			const quantity = parseInt(quantityInput.value) || 0;
 			const total = price * quantity;
+			
 			quantityValue.textContent = total.toLocaleString() + '원';
 		}
+
 		// 모달 열기/닫기는 main.js에서 자동 처리됨
 		document.addEventListener('DOMContentLoaded', function() {
+
 			// 수량 조절 버튼
 			const quantityBtns = document.querySelectorAll('.quantity-btn');
 			quantityBtns.forEach(btn => {
@@ -471,20 +513,25 @@
 					const stockItem = this.closest('.stock-item');
 					const input = stockItem?.querySelector('.quantity-input');
 					if (!input) return;
+					
 					const isUp = this.classList.contains('up');
 					const currentValue = parseInt(input.value) || 0;
 					const newValue = isUp ? currentValue + 1 : Math.max(1, currentValue - 1);
 					input.value = newValue;
+					
 					// readonly 속성 제거하여 값 변경 가능하게
 					input.removeAttribute('readonly');
+					
 					// quantity-value만 업데이트
 					updateQuantityValue(stockItem);
 				});
 			});
+
 			// 수량 입력 변경
 			const quantityInputs = document.querySelectorAll('.quantity-input');
 			quantityInputs.forEach(input => {
 				const stockItem = input.closest('.stock-item');
+				
 				input.addEventListener('input', function() {
 					if (parseInt(this.value) < 1) {
 						this.value = 1;
@@ -494,6 +541,7 @@
 						updateQuantityValue(stockItem);
 					}
 				});
+				
 				input.addEventListener('change', function() {
 					if (parseInt(this.value) < 1) {
 						this.value = 1;
@@ -504,18 +552,22 @@
 					}
 				});
 			});
+
 			// 종목 삭제
 			document.querySelectorAll('.stock-remove').forEach(btn => {
 				btn.addEventListener('click', function() {
 					this.closest('.stock-item')?.remove();
 				});
 			});
+
 			// 모달에서 종목 추가
 			document.querySelectorAll('.modal-stock-add').forEach(btn => {
 				btn.addEventListener('click', function() {
 					const stockItem = this.closest('.modal-stock-item');
 					const stockName = stockItem?.querySelector('.modal-stock-name')?.textContent;
+					
 					if (!stockName) return;
+					
 					// 종목 추가 로직
 					const stockList = document.getElementById('stock-list');
 					if (stockList) {
@@ -544,7 +596,9 @@
 								<button class="stock-remove" type="button" aria-label="종목 삭제">×</button>
 							</div>
 						`;
+						
 						stockList.appendChild(newStockItem);
+						
 						// 새로 추가된 요소에 이벤트 리스너 추가
 						const newQuantityBtns = newStockItem.querySelectorAll('.quantity-btn');
 						newQuantityBtns.forEach(newBtn => {
@@ -552,14 +606,17 @@
 								const stockItem = this.closest('.stock-item');
 								const input = stockItem?.querySelector('.quantity-input');
 								if (!input) return;
+								
 								const isUp = this.classList.contains('up');
 								const currentValue = parseInt(input.value) || 0;
 								const newValue = isUp ? currentValue + 1 : Math.max(1, currentValue - 1);
 								input.value = newValue;
+								
 								// quantity-value만 업데이트
 								updateQuantityValue(stockItem);
 							});
 						});
+						
 						const newInput = newStockItem.querySelector('.quantity-input');
 						if (newInput) {
 							newInput.addEventListener('input', function() {
@@ -577,15 +634,18 @@
 								updateQuantityValue(newStockItem);
 							});
 						}
+						
 						const newRemoveBtn = newStockItem.querySelector('.stock-remove');
 						if (newRemoveBtn) {
 							newRemoveBtn.addEventListener('click', function() {
 								this.closest('.stock-item')?.remove();
 							});
 						}
+						
 						// 초기 가격 설정
 						updateStockPrice(newStockItem);
 					}
+					
 					// 모달 닫기 (기존 시스템 사용)
 					const stockModal = document.getElementById('stockModal');
 					if (stockModal) {
@@ -594,6 +654,7 @@
 					}
 				});
 			});
+
 			// 필터 버튼
 			document.querySelectorAll('.filter-btn').forEach(btn => {
 				btn.addEventListener('click', function() {
@@ -604,6 +665,7 @@
 					}
 				});
 			});
+
 			// 상품 비교하기 버튼
 			const btnCompare = document.getElementById('btn-compare');
 			if (btnCompare) {
@@ -614,10 +676,29 @@
 					}
 				});
 			}
+
 			// 초기 quantity-value 설정
 			document.querySelectorAll('.stock-item').forEach(item => {
 				updateQuantityValue(item);
 			});
+
+			// 법적 고지 더보기 버튼
+			const legalNoticeBtn = document.querySelector('.legal-notice .btn-more');
+			const legalNoticeText = document.querySelector('.legal-notice p');
+			
+			if (legalNoticeBtn && legalNoticeText) {
+				legalNoticeBtn.addEventListener('click', function() {
+					const isExpanded = legalNoticeText.classList.contains('expanded');
+					
+					if (isExpanded) {
+						legalNoticeText.classList.remove('expanded');
+						legalNoticeBtn.textContent = '더보기';
+					} else {
+						legalNoticeText.classList.add('expanded');
+						legalNoticeBtn.textContent = '접기';
+					}
+				});
+			}
 		});
 	</script>
 	<style>
@@ -634,4 +715,6 @@
 		}
 	</style>
 </body>
+
 </html>
+

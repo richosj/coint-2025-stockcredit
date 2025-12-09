@@ -25,6 +25,10 @@ body{background-color: #f2f2f2;}
       .gnb {
         > li {
           > a {
+            display: flex;
+            align-items: center;
+
+            height: 34px;
             color: #333333;
           }
           
@@ -113,6 +117,7 @@ body{background-color: #f2f2f2;}
   a:first-child:not(.logout-a) {
     position: relative;
     padding-right: 16px;
+    
     &::before {
       content: '';
       position: absolute;
@@ -123,9 +128,24 @@ body{background-color: #f2f2f2;}
       background-color: #ffffff;
     }
   }
-  &.logout{
-    a{
-
+  .logout-a{
+    .text{
+      white-space: nowrap;
+      max-width: 100px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .icon{
+      width: 13px;
+      height: 13px;
+      background-image: url('/images/icon-logout.png');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      display: inline-block;
+      vertical-align: middle;
     }
   }
 }
@@ -324,7 +344,36 @@ body{background-color: #f2f2f2;}
 
   .mobile-nav-header {
     padding: 16px 20px;
-
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .mobile-logout{
+      color: #fff;
+      font-size: 15px;
+      font-weight: 900;
+      height: 32px;
+      padding: 0 15px;
+      border-radius: 50px;
+      background-color: #df0000;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      .text{
+        white-space: nowrap;
+        max-width: 100px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .icon{
+        width: 13px;
+        height: 13px;
+        margin-top: -2px;
+        background-image: url('/images/icon-logout.png');
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+      }
+    }
     .btn-back {
       background: none;
       border: none;
