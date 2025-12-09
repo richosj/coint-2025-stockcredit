@@ -1,9 +1,10 @@
 <!-- @pageTitle 마이페이지 -->
 <!-- @pageNote 나의정보 비번입력 & 테스트 스크립트 삽입 -->
 <!-- @pageCreated 2025-11-28 -->
-<!-- @pageUpdated 2025-11-28 -->
+<!-- @pageUpdated 2025-12-07 -->
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
 	<!-- 기본 -->
 	<meta charset="UTF-8">
@@ -38,6 +39,7 @@
   <script src="./assets/js/main.js"></script>
   <link rel="stylesheet" href="./assets/css/main.css">
 </head>
+
 <body>
 	<header id="header" class="header">
 	  <div class="header-inner">
@@ -77,8 +79,8 @@
 	      <!-- <a href="#" class="#">회원가입</a>
 	      <a href="#" class="#">로그인</a> -->
 	      <a href="#" class="logout-a">
-	        <span class="text">djaflkasjlk</span>
-	        <span class="icon">x</span>
+	        <span class="text">djaflkasjlkdjaflkasjlk</span>
+	        <span class="icon"></span>
 	      </a>
 	    </div>
 	
@@ -104,6 +106,13 @@
 	          <path d="M15 18L9 12L15 6" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
 	        </svg>
 	      </button>
+	
+	      <div class="mobile-logout">
+	        <span class="text">djaflkasjlkdjaflkasjlk</span>
+	        <button class="btn-logout">
+	          <span class="icon"></span>
+	        </button>
+	      </div>
 	    </div>
 	
 	    <div class="mobile-gnb">
@@ -150,6 +159,7 @@
 	</nav>
 	<!-- // mobile-nav -->	<main id="main" class="main">
 		<div class="subVisual">
+					
 		</div>
 		<div class="breadcrumb">
 			<div class="container">
@@ -163,6 +173,7 @@
 				</ol>
 			</div>
 		</div>
+
 		<div id="sub-layout">
 			<div class="container">
 				<div class="login-container">
@@ -181,7 +192,9 @@
 				</div>
 			</div>
 		</div>
+
 	</main>
+
 	<footer id="footer" class="footer">
 		<div class="container">
 			<div class="footer-inner">
@@ -312,7 +325,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div>
 	<script>
 		// 테스트용 비밀번호 검증
 		document.addEventListener('DOMContentLoaded', function() {
@@ -320,6 +333,7 @@
 			const passwordInput = document.getElementById('mypage-confirm-password');
 			const errorMessage = document.getElementById('password-error');
 			const submitButton = form.querySelector('.btn-login');
+
 			// 비밀번호 입력 시 버튼 활성화
 			passwordInput.addEventListener('input', function() {
 				if (this.value.length > 0) {
@@ -332,10 +346,13 @@
 					errorMessage.style.display = 'none';
 				}
 			});
+
 			// 폼 제출 시 비밀번호 검증 (테스트용: 올바른 비밀번호는 "1234")
 			form.addEventListener('submit', function(e) {
 				e.preventDefault();
+				
 				const password = passwordInput.value;
+				
 				// 테스트용: 비밀번호가 "1234"가 아니면 에러 표시
 				if (password !== '1234') {
 					errorMessage.style.display = 'block';
@@ -349,4 +366,5 @@
 		});
 	</script>
 </body>
+
 </html>
