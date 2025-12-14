@@ -4,7 +4,6 @@
 <!-- @pageUpdated 2025-12-07 -->
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
 	<!-- 기본 -->
 	<meta charset="UTF-8">
@@ -39,7 +38,6 @@
   <script src="./assets/js/main.js"></script>
   <link rel="stylesheet" href="./assets/css/main.css">
 </head>
-
 <body>
 	<header id="header" class="header">
 	  <div class="header-inner">
@@ -159,7 +157,6 @@
 	</nav>
 	<!-- // mobile-nav -->	<main id="main" class="main">
 		<div class="subVisual">
-					
 		</div>
 		<div class="breadcrumb">
 			<div class="container">
@@ -173,7 +170,6 @@
 				</ol>
 			</div>
 		</div>
-
 		<div id="sub-layout">
 			<div class="container">
 				<div class="login-container">
@@ -230,9 +226,7 @@
 				</div>
 			</div>
 		</div>
-
 	</main>
-
 	<footer id="footer" class="footer">
 		<div class="container">
 			<div class="footer-inner">
@@ -363,7 +357,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div>
 	<script>
 		document.addEventListener('DOMContentLoaded', function() {
 			const findIdForm = document.getElementById('find_id-form');
@@ -373,7 +367,6 @@
 			const confirmPhone = document.getElementById('confirm-phone');
 			const carrierBtns = document.querySelectorAll('.carrier-btn');
 			const breadcrumbSpan = document.querySelector('.breadcrumb-item span');
-
 			// 에러 메시지 표시 함수
 			function showError(input, message) {
 				let errorDiv = input.parentElement.querySelector('.error-message');
@@ -387,7 +380,6 @@
 				errorDiv.style.color = '#df0000';
 				input.style.borderColor = '#df0000';
 			}
-
 			// 에러 메시지 숨기기
 			function hideError(input) {
 				const errorDiv = input.parentElement.querySelector('.error-message');
@@ -396,19 +388,16 @@
 				}
 				input.style.borderColor = '';
 			}
-
 			// 전화번호 유효성 검사
 			function validatePhone(phone) {
 				const phoneRegex = /^[0-9]{10,11}$/;
 				return phoneRegex.test(phone.replace(/[^0-9]/g, ''));
 			}
-
 			// 생년월일 유효성 검사 (6자리 숫자)
 			function validateBirth(birth) {
 				const birthRegex = /^[0-9]{6}$/;
 				return birthRegex.test(birth.replace(/[^0-9]/g, ''));
 			}
-
 			// 통신사 버튼 클릭 이벤트
 			carrierBtns.forEach(btn => {
 				btn.addEventListener('click', function() {
@@ -416,7 +405,6 @@
 					this.classList.add('active');
 				});
 			});
-
 			// 실시간 검증
 			if (confirmName) {
 				confirmName.addEventListener('blur', function() {
@@ -427,7 +415,6 @@
 					}
 				});
 			}
-
 			if (confirmBirth) {
 				confirmBirth.addEventListener('blur', function() {
 					if (this.value.trim() && !validateBirth(this.value)) {
@@ -437,7 +424,6 @@
 					}
 				});
 			}
-
 			if (confirmPhone) {
 				confirmPhone.addEventListener('blur', function() {
 					if (this.value.trim() && !validatePhone(this.value)) {
@@ -447,14 +433,11 @@
 					}
 				});
 			}
-
 			// 폼 제출 검증
 			if (findIdForm) {
 				findIdForm.addEventListener('submit', function(e) {
 					e.preventDefault();
-
 					let isValid = true;
-
 					// 이름 검증
 					if (!confirmName || !confirmName.value.trim()) {
 						if (confirmName) showError(confirmName, '이름을 입력해주세요.');
@@ -465,7 +448,6 @@
 					} else {
 						hideError(confirmName);
 					}
-
 					// 생년월일 검증
 					if (!confirmBirth || !confirmBirth.value.trim()) {
 						if (confirmBirth) showError(confirmBirth, '생년월일을 입력해주세요.');
@@ -476,7 +458,6 @@
 					} else {
 						hideError(confirmBirth);
 					}
-
 					// 성별 검증
 					if (!confirmGender || !confirmGender.value) {
 						if (confirmGender) {
@@ -486,14 +467,12 @@
 					} else {
 						hideError(confirmGender);
 					}
-
 					// 통신사 선택 검증
 					const activeCarrier = document.querySelector('.carrier-btn.active');
 					if (!activeCarrier) {
 						alert('통신사를 선택해주세요.');
 						isValid = false;
 					}
-
 					// 전화번호 검증
 					if (!confirmPhone || !confirmPhone.value.trim()) {
 						if (confirmPhone) showError(confirmPhone, '전화번호를 입력해주세요.');
@@ -504,7 +483,6 @@
 					} else {
 						hideError(confirmPhone);
 					}
-
 					if (isValid) {
 						if (breadcrumbSpan) breadcrumbSpan.textContent = '아이디찾기 Step2 (문자인증)';
 						alert('본인인증이 완료되었습니다.');
@@ -515,5 +493,4 @@
 		});
 	</script>
 </body>
-
 </html>

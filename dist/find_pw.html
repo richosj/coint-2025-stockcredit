@@ -4,7 +4,6 @@
 <!-- @pageUpdated 2025-12-07 -->
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
 	<!-- 기본 -->
 	<meta charset="UTF-8">
@@ -39,7 +38,6 @@
   <script src="./assets/js/main.js"></script>
   <link rel="stylesheet" href="./assets/css/main.css">
 </head>
-
 <body>
 	<header id="header" class="header">
 	  <div class="header-inner">
@@ -159,7 +157,6 @@
 	</nav>
 	<!-- // mobile-nav -->	<main id="main" class="main">
 		<div class="subVisual">
-					
 		</div>
 		<div class="breadcrumb">
 			<div class="container">
@@ -173,7 +170,6 @@
 				</ol>
 			</div>
 		</div>
-
 		<div id="sub-layout">
 			<div class="container">
 				<div class="login-container">
@@ -223,9 +219,7 @@
 				</div>
 			</div>
 		</div>
-
 	</main>
-
 	<footer id="footer" class="footer">
 		<div class="container">
 			<div class="footer-inner">
@@ -356,7 +350,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div>
 	<script>
 		document.addEventListener('DOMContentLoaded', function() {
 			const findPwForm = document.getElementById('find_pw-form');
@@ -367,11 +361,9 @@
 			const confirmPhone = document.getElementById('confirm-phone');
 			const carrierBtns = document.querySelectorAll('.carrier-btn');
 			const breadcrumbSpan = document.querySelector('.breadcrumb-item span');
-
 			// 초기 설정
 			if (verificationConfirm) verificationConfirm.style.display = 'none';
 			let currentStep = 1;
-
 			// 에러 메시지 표시 함수
 			function showError(input, message) {
 				let errorDiv = input.parentElement.querySelector('.error-message');
@@ -385,7 +377,6 @@
 				errorDiv.style.color = '#df0000';
 				input.style.borderColor = '#df0000';
 			}
-
 			// 에러 메시지 숨기기
 			function hideError(input) {
 				const errorDiv = input.parentElement.querySelector('.error-message');
@@ -394,19 +385,16 @@
 				}
 				input.style.borderColor = '';
 			}
-
 			// 이메일 유효성 검사
 			function validateEmail(email) {
 				const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 				return emailRegex.test(email);
 			}
-
 			// 전화번호 유효성 검사
 			function validatePhone(phone) {
 				const phoneRegex = /^[0-9]{10,11}$/;
 				return phoneRegex.test(phone.replace(/[^0-9]/g, ''));
 			}
-
 			// 통신사 버튼 클릭 이벤트
 			carrierBtns.forEach(btn => {
 				btn.addEventListener('click', function() {
@@ -414,7 +402,6 @@
 					this.classList.add('active');
 				});
 			});
-
 			// 실시간 검증
 			if (findId) {
 				findId.addEventListener('blur', function() {
@@ -425,7 +412,6 @@
 					}
 				});
 			}
-
 			if (confirmId) {
 				confirmId.addEventListener('blur', function() {
 					if (this.value.trim() && !validateEmail(this.value.trim())) {
@@ -435,7 +421,6 @@
 					}
 				});
 			}
-
 			if (confirmPhone) {
 				confirmPhone.addEventListener('blur', function() {
 					if (this.value.trim() && !validatePhone(this.value)) {
@@ -445,12 +430,10 @@
 					}
 				});
 			}
-
 			// 폼 제출 검증
 			if (findPwForm) {
 				findPwForm.addEventListener('submit', function(e) {
 					e.preventDefault();
-
 					if (currentStep === 1) {
 						// Step1: ID 검증
 						if (!findId || !findId.value.trim()) {
@@ -462,7 +445,6 @@
 							return;
 						}
 						hideError(findId);
-
 						// Step2로 이동
 						if (verificationId) verificationId.style.display = 'none';
 						if (verificationConfirm) verificationConfirm.style.display = 'block';
@@ -472,7 +454,6 @@
 					} else if (currentStep === 2) {
 						// Step2: 본인인증
 						let isValid = true;
-
 						// 아이디 검증
 						if (!confirmId || !confirmId.value.trim()) {
 							if (confirmId) showError(confirmId, '아이디(이메일)를 입력해주세요.');
@@ -483,7 +464,6 @@
 						} else {
 							hideError(confirmId);
 						}
-
 						// 전화번호 검증
 						if (!confirmPhone || !confirmPhone.value.trim()) {
 							if (confirmPhone) showError(confirmPhone, '전화번호를 입력해주세요.');
@@ -494,14 +474,12 @@
 						} else {
 							hideError(confirmPhone);
 						}
-
 						// 통신사 선택 검증
 						const activeCarrier = document.querySelector('.carrier-btn.active');
 						if (!activeCarrier) {
 							alert('통신사를 선택해주세요.');
 							isValid = false;
 						}
-
 						if (isValid) {
 							alert('본인인증이 완료되었습니다.');
 							// 실제 인증 로직으로 대체
@@ -512,5 +490,4 @@
 		});
 	</script>
 </body>
-
 </html>

@@ -66,13 +66,16 @@
   right: 25px;
   background: none;
   border: none;
-  font-size: 36px;
+  font-size: 23px;
   cursor: pointer;
   color: #333;
   line-height: 1;
   font-weight: 300;
   transition: color 0.2s;
   z-index: 10;
+  @media (min-width: map.get($breakpoints, 'md')) {
+    font-size: 36px;
+  }
 }
 
 .modal-close:hover {

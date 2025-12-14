@@ -3228,13 +3228,18 @@ legend {
   right: 25px;
   background: none;
   border: none;
-  font-size: 36px;
+  font-size: 23px;
   cursor: pointer;
   color: #333;
   line-height: 1;
   font-weight: 300;
   transition: color 0.2s;
   z-index: 10;
+}
+@media (min-width: 768px) {
+  .modal-close {
+    font-size: 36px;
+  }
 }
 
 .modal-close:hover {
@@ -3352,6 +3357,14 @@ legend {
   border: 0;
   background-color: #e5e5e5;
   font-size: 12px;
+}
+@media (min-width: 768px) {
+  .pagination .page-item {
+    font-size: 28px;
+    width: 60px;
+    height: 50px;
+    border-radius: 20px;
+  }
 }
 .pagination .page-item:hover:not(.active):not(.disabled) {
   background-color: #d5d5d5;
@@ -3611,7 +3624,8 @@ legend {
 }
 @media (min-width: 768px) {
   .table th {
-    font-size: 16px;
+    font-size: 20px;
+    font-weight: 500;
     padding: 30px 0;
   }
 }
@@ -3626,8 +3640,9 @@ legend {
 }
 @media (min-width: 768px) {
   .table td {
-    font-size: 14px;
+    font-size: 20px;
     padding: 25px 0;
+    font-weight: 500;
   }
 }
 .table .col-title {
@@ -3636,6 +3651,7 @@ legend {
 .table .col-nodata {
   color: #808080;
   font-size: 14px;
+  font-weight: 500;
 }
 @media (min-width: 768px) {
   .table .col-nodata {
@@ -5260,10 +5276,19 @@ body:has(.main-visual) .footer-buttons {
   font-size: 18px;
   margin-bottom: 20px;
 }
+.sub-title:has(.error-message) {
+  display: flex;
+  align-items: center;
+  gap: 0 15px;
+}
+.sub-title:has(.error-message) .error-message {
+  margin-top: 0;
+}
 @media (min-width: 768px) {
   .sub-title {
-    font-size: 24px;
-    margin-bottom: 50px;
+    font-size: 26px;
+    margin-bottom: 45px;
+    font-weight: 500;
   }
 }
 
@@ -5296,7 +5321,12 @@ body:has(.main-visual) .footer-buttons {
 }
 
 .table-title {
-  font-weight: 700;
+  font-weight: 500;
+}
+@media (min-width: 768px) {
+  .table-title {
+    font-size: 20px;
+  }
 }
 
 .table-content {
@@ -6795,4 +6825,316 @@ body:has(.main-visual) .footer-buttons {
 }
 .legal-notice .btn-more:hover {
   color: #333;
+}
+
+.btn-write {
+  margin-top: 25px;
+}
+.btn-write .btn {
+  height: 56px;
+  padding: 0 30px;
+  color: #fff;
+  background-color: #df0000;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .btn-write {
+    margin-top: 40px;
+  }
+  .btn-write .btn {
+    height: 90px;
+    font-size: 28px;
+    border-radius: 20px;
+  }
+}
+
+.qna-form .form-group {
+  margin-bottom: 10px;
+}
+@media (min-width: 768px) {
+  .qna-form .form-group {
+    margin-bottom: 20px;
+  }
+}
+.qna-form .form-group:last-child {
+  margin-bottom: 0;
+}
+.qna-form .input,
+.qna-form .textarea {
+  width: 100%;
+  padding: 0 20px;
+  height: 40px;
+  font-size: 14px;
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+  background-color: #e6e6e6;
+  box-sizing: border-box;
+}
+.qna-form .input[readonly],
+.qna-form .textarea[readonly] {
+  background-color: #fff;
+  border-color: #999999;
+}
+@media (min-width: 768px) {
+  .qna-form .input,
+  .qna-form .textarea {
+    padding: 0 35px;
+    font-size: 24px;
+    height: 80px;
+    border-radius: 20px;
+  }
+}
+.qna-form .input::placeholder,
+.qna-form .textarea::placeholder {
+  color: #999;
+}
+.qna-form .input:focus,
+.qna-form .textarea:focus {
+  outline: none;
+  border-color: #df0000;
+}
+.qna-form .textarea {
+  min-height: 150px;
+  resize: vertical;
+  line-height: 1.6;
+  padding-top: 15px;
+}
+@media (min-width: 768px) {
+  .qna-form .textarea {
+    padding-top: 30px;
+    min-height: 200px;
+  }
+}
+.qna-form .error-message {
+  display: block;
+  margin-top: 8px;
+  font-size: 12px;
+  color: #df0000;
+}
+@media (min-width: 768px) {
+  .qna-form .error-message {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+}
+.qna-form .captcha-section {
+  padding-top: 10px;
+}
+@media (min-width: 768px) {
+  .qna-form .captcha-section {
+    padding-top: 20px;
+  }
+}
+.qna-form .captcha-section .captcha-label {
+  display: block;
+  line-height: 1;
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #797979;
+}
+@media (min-width: 768px) {
+  .qna-form .captcha-section .captcha-label {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+}
+.qna-form .captcha-section .captcha-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+@media (min-width: 768px) {
+  .qna-form .captcha-section .captcha-wrapper {
+    gap: 16px;
+  }
+}
+.qna-form .captcha-section .captcha-image-wrapper {
+  flex-shrink: 0;
+}
+.qna-form .captcha-section .captcha-image-wrapper #captcha-canvas {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #fff;
+}
+.qna-form .captcha-section #captcha-input {
+  max-width: 320px;
+}
+.qna-form .captcha-section #captcha-canvas {
+  height: 25px;
+  width: 75px;
+}
+@media screen and (min-width: 768px) {
+  .qna-form .captcha-section #captcha-canvas {
+    width: 150px;
+    height: 52px;
+  }
+}
+.qna-form .captcha-section .captcha-input-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.qna-form .captcha-section .captcha-input-wrapper .input {
+  flex: 1;
+}
+.qna-form .captcha-section .captcha-input-wrapper .captcha-refresh {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  width: 18px;
+}
+@media (min-width: 768px) {
+  .qna-form .captcha-section .captcha-input-wrapper .captcha-refresh {
+    width: 37px;
+  }
+}
+.qna-form .captcha-section .error-message {
+  margin-top: 8px;
+}
+@media (min-width: 768px) {
+  .qna-form .captcha-section .error-message {
+    margin-top: 10px;
+  }
+}
+.qna-form .btn-submit {
+  width: 100%;
+  height: 56px;
+  padding: 0;
+  color: #fff;
+  background-color: #df0000;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+@media (min-width: 768px) {
+  .qna-form .btn-submit {
+    height: 70px;
+    font-size: 20px;
+    border-radius: 12px;
+  }
+}
+.qna-form .btn-submit:hover {
+  background-color: #c00000;
+}
+.qna-form .btn-submit:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+#qnaModal .modal-title {
+  text-align: left;
+}
+#qnaModal .modal-content {
+  background-color: #f2f2f2;
+}
+
+.qna-view-form .form-group {
+  margin-bottom: 20px;
+}
+@media (min-width: 768px) {
+  .qna-view-form .form-group {
+    margin-bottom: 30px;
+  }
+}
+.qna-view-form .form-group:last-child {
+  margin-bottom: 0;
+}
+.qna-view-form .form-group--inline {
+  display: flex;
+  gap: 12px;
+}
+@media (min-width: 768px) {
+  .qna-view-form .form-group--inline {
+    gap: 16px;
+  }
+}
+.qna-view-form .form-group--inline .input {
+  flex: 1;
+}
+.qna-view-form .input,
+.qna-view-form .textarea {
+  width: 100%;
+  padding: 0 20px;
+  height: 40px;
+  font-size: 14px;
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+  background-color: #e6e6e6;
+  box-sizing: border-box;
+}
+.qna-view-form .input[readonly],
+.qna-view-form .textarea[readonly] {
+  background-color: #fff;
+  border-color: #999999;
+  cursor: default;
+}
+@media (min-width: 768px) {
+  .qna-view-form .input,
+  .qna-view-form .textarea {
+    padding: 0 35px;
+    font-size: 24px;
+    height: 80px;
+    border-radius: 20px;
+  }
+}
+.qna-view-form .input::placeholder,
+.qna-view-form .textarea::placeholder {
+  color: #999;
+}
+.qna-view-form .textarea {
+  min-height: 150px;
+  resize: none;
+  line-height: 1.6;
+  padding-top: 15px;
+}
+@media (min-width: 768px) {
+  .qna-view-form .textarea {
+    padding-top: 30px;
+    min-height: 360px;
+  }
+}
+.qna-view-form .btn-delete {
+  width: 100%;
+  height: 56px;
+  padding: 0;
+  color: #fff;
+  background-color: #df0000;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+@media (min-width: 768px) {
+  .qna-view-form .btn-delete {
+    height: 90px;
+    font-size: 30px;
+    border-radius: 20px;
+  }
+}
+.qna-view-form .btn-delete:hover {
+  background-color: #c00000;
+}
+
+#qnaViewModal .modal-title {
+  text-align: left;
+}
+#qnaViewModal .modal-content {
+  background-color: #f2f2f2;
 }
