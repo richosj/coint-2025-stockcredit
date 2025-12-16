@@ -4862,10 +4862,6 @@ body:has(.main-visual) .footer-buttons {
   display: block;
 }
 
-.login-container {
-  padding-left: 25px;
-  padding-right: 25px;
-}
 @media (min-width: 768px) {
   .login-container {
     padding-left: 0;
@@ -5060,6 +5056,11 @@ body:has(.main-visual) .footer-buttons {
     line-height: 1.5;
   }
 }
+@media (min-width: 768px) {
+  .info-message .mobile-only {
+    display: none;
+  }
+}
 
 .find_id-content {
   display: flex;
@@ -5150,22 +5151,56 @@ body:has(.main-visual) .footer-buttons {
 .signup-terms {
   display: flex;
   flex-direction: column;
+  gap: 10px !important;
+}
+@media (min-width: 768px) {
+  .signup-terms {
+    gap: 10px !important;
+  }
 }
 .signup-terms .signup-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+.signup-terms .signup-item._all {
+  margin-bottom: 5px;
+}
+.signup-terms .signup-item._all label {
+  font-weight: 700 !important;
+}
+@media (min-width: 768px) {
+  .signup-terms .signup-item._all {
+    margin-bottom: 0;
+  }
+}
 @media (min-width: 768px) {
   .signup-terms .signup-item {
-    width: 60%;
+    width: 380px;
   }
 }
 .signup-terms .signup-item .signup-check {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 7px;
   flex: 1;
+}
+@media (min-width: 768px) {
+  .signup-terms .signup-item .signup-check {
+    gap: 14px;
+  }
+}
+.signup-terms .signup-item .signup-check #terms-all {
+  background-color: #d0d6db;
+}
+.signup-terms .signup-item .signup-check #terms-all::after {
+  border-color: #fff;
+}
+.signup-terms .signup-item .signup-check #terms-all:checked {
+  background-color: #e60012;
+}
+.signup-terms .signup-item .signup-check #terms-all:checked::after {
+  border-color: #fff;
 }
 .signup-terms .signup-item .signup-check input[type=checkbox] {
   width: 24px;
@@ -5177,11 +5212,7 @@ body:has(.main-visual) .footer-buttons {
   position: relative;
   flex-shrink: 0;
 }
-.signup-terms .signup-item .signup-check input[type=checkbox]:checked {
-  background-color: #e60012;
-  border-color: #e60012;
-}
-.signup-terms .signup-item .signup-check input[type=checkbox]:checked::after {
+.signup-terms .signup-item .signup-check input[type=checkbox]::after {
   content: "";
   position: absolute;
   left: 50%;
@@ -5189,9 +5220,15 @@ body:has(.main-visual) .footer-buttons {
   transform: translate(-50%, -50%);
   width: 6px;
   height: 10px;
-  border: solid white;
+  border: solid #d0d6db;
   border-width: 0 2px 2px 0;
   transform: translate(-50%, -60%) rotate(45deg);
+}
+.signup-terms .signup-item .signup-check input[type=checkbox]:checked {
+  border-color: #e60012;
+}
+.signup-terms .signup-item .signup-check input[type=checkbox]:checked::after {
+  border-color: #e60012;
 }
 .signup-terms .signup-item .signup-check input[type=checkbox]:checked + label .required {
   color: #e60012;
@@ -5221,16 +5258,20 @@ body:has(.main-visual) .footer-buttons {
 .signup-terms .signup-item .signup-arrow {
   background: none;
   border: none;
-  padding: 8px;
+  padding: 0 8px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
 }
-.signup-terms .signup-item .signup-arrow svg {
-  width: 8px;
-  height: 14px;
+.signup-terms .signup-item .signup-arrow img {
+  width: 5px;
+}
+@media (min-width: 768px) {
+  .signup-terms .signup-item .signup-arrow img {
+    width: 10px;
+  }
 }
 .signup-content .signup-notice {
   width: 100%;
@@ -5268,6 +5309,38 @@ body:has(.main-visual) .footer-buttons {
     height: 90px;
     font-size: 28px;
     border-radius: 20px;
+  }
+}
+
+#signup-form .signup-terms {
+  margin-top: -15px;
+  border: 1px solid #ccc;
+  padding: 15px 22px;
+  border-radius: 10px;
+}
+@media (min-width: 768px) {
+  #signup-form .signup-terms {
+    padding: 15px 30px;
+    border-radius: 20px;
+  }
+}
+#signup-form .info-message.large {
+  padding-left: 22px;
+}
+@media (min-width: 768px) {
+  #signup-form .info-message.large {
+    padding-left: 0;
+    font-size: 24px;
+    font-weight: 500;
+  }
+}
+#signup-form .error-message.fr {
+  padding-left: 22px;
+  margin-top: -35px;
+}
+@media (min-width: 768px) {
+  #signup-form .error-message.fr {
+    padding-left: 0;
   }
 }
 
