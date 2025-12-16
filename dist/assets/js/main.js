@@ -192,12 +192,31 @@ document.addEventListener("DOMContentLoaded", function() {
       this.classList.add("active");
     });
   });
-  const signupCheckboxes = document.querySelectorAll('.signup-content input[type="checkbox"]');
-  const signupArrows = document.querySelectorAll(".signup-arrow");
-  signupCheckboxes.forEach((checkbox) => {
-    checkbox.addEventListener("change", function() {
+  const termsAll = document.getElementById("terms-all");
+  const termsService = document.getElementById("terms-service");
+  const termsPrivacy = document.getElementById("terms-privacy");
+  const termsUnique = document.getElementById("terms-unique");
+  const termsMarketing = document.getElementById("terms-marketing");
+  const individualTerms = [termsService, termsPrivacy, termsUnique, termsMarketing].filter(Boolean);
+  if (termsAll) {
+    termsAll.addEventListener("change", function() {
+      const isChecked = this.checked;
+      individualTerms.forEach((checkbox) => {
+        if (checkbox) {
+          checkbox.checked = isChecked;
+        }
+      });
     });
-  });
+    individualTerms.forEach((checkbox) => {
+      if (checkbox) {
+        checkbox.addEventListener("change", function() {
+          const allChecked = individualTerms.every((cb) => cb && cb.checked);
+          termsAll.checked = allChecked;
+        });
+      }
+    });
+  }
+  const signupArrows = document.querySelectorAll(".signup-arrow");
   signupArrows.forEach((arrow) => {
     arrow.addEventListener("click", function() {
     });
@@ -240,13 +259,13 @@ document.addEventListener("DOMContentLoaded", function() {
       const phoneRegex = /^[0-9]{10,11}$/;
       return phoneRegex.test(phone.replace(/[^0-9]/g, ""));
     }, validateStep12 = function() {
-      const termsService = document.getElementById("terms-service");
-      const termsPrivacy = document.getElementById("terms-privacy");
-      if (!termsService || !termsService.checked) {
+      const termsService2 = document.getElementById("terms-service");
+      const termsPrivacy2 = document.getElementById("terms-privacy");
+      if (!termsService2 || !termsService2.checked) {
         alert("서비스 이용약관에 동의해주세요.");
         return false;
       }
-      if (!termsPrivacy || !termsPrivacy.checked) {
+      if (!termsPrivacy2 || !termsPrivacy2.checked) {
         alert("개인정보수집 및 이용동의에 동의해주세요.");
         return false;
       }

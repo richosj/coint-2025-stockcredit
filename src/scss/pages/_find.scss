@@ -15,7 +15,13 @@
     font-size: 18px;
     line-height: 1.5;
   }
+  .mobile-only{
+    @media (min-width: map.get($breakpoints, 'md')) {
+      display: none;
+    }
+  }
 }
+
 
 .find_id-content {
   display: flex;

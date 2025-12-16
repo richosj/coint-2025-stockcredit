@@ -7,24 +7,54 @@
 @use '../abstracts/utilities' as *;
 
 .signup{
+  
   &-terms{
     display: flex;
     flex-direction: column;
-
+    gap:10px !important;
+    @media (min-width: map.get($breakpoints, 'md')) {
+      gap: 10px !important;
+    }
     .signup-item {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      &._all{
+        margin-bottom: 5px;
+        label{
+          font-weight: 700 !important;
+        }
+        @media (min-width: map.get($breakpoints, 'md')) {
+          margin-bottom: 0;
+        }
+      }
       @media (min-width: map.get($breakpoints, 'md')) {
-        width: 60%;
+        width: 380px;
       }
 
       .signup-check {
         display: flex;
         align-items: center;
-        gap: 12px;
+        gap: 7px;
         flex: 1;
+        @media (min-width: map.get($breakpoints, 'md')) {
+          gap: 14px;
+        }
 
+        #terms-all{
+          
+            background-color: #d0d6db;
+            &::after{
+              border-color: #fff;
+            }
+            &:checked {
+              background-color: #e60012;
+              &::after{
+                border-color: #fff;
+              }
+            }
+          
+        }
         input[type="checkbox"] {
           width: 24px;
           height: 24px;
@@ -34,22 +64,25 @@
           cursor: pointer;
           position: relative;
           flex-shrink: 0;
-
+          
+          &::after{
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 6px;
+            height: 10px;
+            border: solid #d0d6db;
+            border-width: 0 2px 2px 0;
+            transform: translate(-50%, -60%) rotate(45deg);
+          }
           &:checked {
-            background-color: #e60012;
+            //background-color: #e60012;
             border-color: #e60012;
 
             &::after {
-              content: '';
-              position: absolute;
-              left: 50%;
-              top: 50%;
-              transform: translate(-50%, -50%);
-              width: 6px;
-              height: 10px;
-              border: solid white;
-              border-width: 0 2px 2px 0;
-              transform: translate(-50%, -60%) rotate(45deg);
+              border-color: #e60012;
             }
           }
 
@@ -88,16 +121,18 @@
       .signup-arrow {
         background: none;
         border: none;
-        padding: 8px;
+        padding: 0 8px;
         cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
 
-        svg {
-          width: 8px;
-          height: 14px;
+        img {
+          width: 5px;
+          @media (min-width: map.get($breakpoints, 'md')) {
+            width: 10px;
+          }
         }
       }
     }
@@ -138,4 +173,35 @@
       }
     }
   }
+}
+
+#signup-form{
+  .signup-terms{
+    margin-top: -15px;
+    border: 1px solid #ccc;
+    padding: 15px 22px;
+    border-radius: 10px;
+    @media (min-width: map.get($breakpoints, 'md')) {
+      padding: 15px 30px;
+      border-radius: 20px;
+    }
+  }
+  .info-message.large{
+    padding-left: 22px;
+    @media (min-width: map.get($breakpoints, 'md')) {
+      padding-left: 0;
+      font-size: 24px;
+      font-weight: 500;
+    }
+  }
+  .error-message.fr{
+    padding-left: 22px;
+    margin-top: -35px;
+    @media (min-width: map.get($breakpoints, 'md')) {
+      padding-left: 0;
+    }
+  }
+}
+.signup-terms{
+  
 }

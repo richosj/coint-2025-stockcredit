@@ -191,15 +191,40 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // 회원가입
-    const signupCheckboxes = document.querySelectorAll('.signup-content input[type="checkbox"]');
-    const signupArrows = document.querySelectorAll('.signup-arrow');
-
-    signupCheckboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', function() {
+    // 회원가입 - 모두 동의 체크박스 기능
+    const termsAll = document.getElementById('terms-all');
+    const termsService = document.getElementById('terms-service');
+    const termsPrivacy = document.getElementById('terms-privacy');
+    const termsUnique = document.getElementById('terms-unique');
+    const termsMarketing = document.getElementById('terms-marketing');
+    
+    // 개별 약관 체크박스들
+    const individualTerms = [termsService, termsPrivacy, termsUnique, termsMarketing].filter(Boolean);
+    
+    if (termsAll) {
+        // "모두 동의" 체크박스 클릭 시
+        termsAll.addEventListener('change', function() {
+            const isChecked = this.checked;
+            individualTerms.forEach(checkbox => {
+                if (checkbox) {
+                    checkbox.checked = isChecked;
+                }
+            });
         });
-    });
-
+        
+        // 개별 약관 체크박스 변경 시 "모두 동의" 상태 업데이트
+        individualTerms.forEach(checkbox => {
+            if (checkbox) {
+                checkbox.addEventListener('change', function() {
+                    const allChecked = individualTerms.every(cb => cb && cb.checked);
+                    termsAll.checked = allChecked;
+                });
+            }
+        });
+    }
+    
+    const signupArrows = document.querySelectorAll('.signup-arrow');
+    
     signupArrows.forEach(arrow => {
         arrow.addEventListener('click', function() {
         });
